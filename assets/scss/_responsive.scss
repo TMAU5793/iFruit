@@ -1,0 +1,223 @@
+@media only screen and (max-width: 1400px) {
+   .online-buying{
+      .product-list{
+         margin-top: 5rem !important;
+      }
+   }
+   .product-page{
+      .product-list{
+         margin-top: 3rem !important;
+      }
+   }
+   .slick-2-items {
+      margin-top: 3rem !important;
+   }
+}
+@media only screen and (max-width: 1199px) {
+   .contact-page{
+      .contact-social ul li a{
+         font-size: 28px !important;
+      }
+   }
+   .product-detail-page{
+      img{
+         width: 100%;
+      }
+   }
+   .online-buying{
+      .h-hotchili-desc, .h-truffle-desc{
+         top: 4rem !important;
+         right: 1rem !important;
+         padding: 1rem !important;
+         text-align: center;
+         border-radius: 15px;
+      }
+   }
+}
+
+@media only screen and (max-width: 991px) {
+   .nav-mobile{
+      background-color: #ffe26a;
+      li a{
+         color: #4f2006 !important;
+      }
+   }
+   .font-h2 {
+      font-size: 45px !important;
+   }
+   .contact-page{
+      .contact-social ul li a{
+         font-size: 18px !important;
+      }
+   }
+   .news-title{
+      a{
+         font-size: 26px !important;
+         line-height: 26px !important;
+      }
+   }
+   .news-promotion{
+      height: auto !important;
+      .slick-2-items {
+         margin-top: 2rem !important;
+      }
+   }
+   .newspromotion-desc{
+      .newspro-desc{
+         padding: 1rem 8rem 1rem 5rem;
+      }
+   }
+   .online-buying{
+      height: auto !important;
+      img{
+         max-width: 220px !important;
+      }
+      .h-hotchili-desc,.h-truffle-desc{
+         top: 1rem !important;
+         right: 1rem !important;
+         padding: 1rem !important;
+         width: 160px;
+         h3{
+            font-size: 1.35rem;
+         }
+      }
+      .product-list {
+         margin-top: 2rem !important;
+      }
+   }
+   .product-detail-page{
+      .col-md-8{
+         .mid-center{
+            position: relative;
+            transform: none;
+            top: auto;
+            left: auto;
+            padding: 15px 0;
+         }
+      }
+   }
+   .green_gradient.h-100vh{
+      height: auto !important;
+   }
+   .m-unmid-center{
+      position: relative !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+      margin: 0 15px;
+   }
+   .slick-2-items .slick-list.draggable{
+      .slick-slide{
+        width: 380px !important;
+      }
+   }
+   .newspro-list .col-12{
+      margin-bottom: 1rem !important;
+   }
+}
+
+@media only screen and (max-width: 480px) {
+   .font-h2{
+      font-size: 45px !important;
+   }
+   .order-m1{
+      order: 1;
+   }
+   .order-m2{
+      order: 2;
+   }
+   .order-m3{
+      order: 3;
+   }
+   .h-100vh{
+      height: auto !important;
+   }
+   .m-unmid-center{
+      position: relative !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+      margin: 0 15px;
+      .col-md-6{
+         text-align: center !important;
+      }
+      .col-md-6.text-right{
+         margin-bottom: 15px;
+      }
+   }
+   .contact-page{
+      .row.mt-5rem{
+         margin: auto !important;
+      }
+      .col-md-6.order-m1{
+         margin-top: 3rem;
+      }
+   }
+   .about-page{
+      .container.ptb-60{
+         padding: 60px 15px;
+      }
+      .about-product{
+         img{
+            width: 100%;
+         }
+      }
+   }
+   .newspromotion-page{
+      background-size: inherit !important;
+      background-repeat: repeat-y !important;
+      .container.ptb-60{
+         padding: 60px 15px 0;
+      }
+   }
+   .newspromotion-desc{
+      background-size: inherit !important;
+      background-repeat: repeat-y !important;
+      .container.ptb-60{
+         padding: 60px 15px 0;
+      }
+      .ff_rukdeaw.font-h2{
+         line-height: 40px;
+      }
+      .newspro-desc.mt-5{
+         padding: 1rem;
+         margin: 1.5rem auto !important;
+      }
+   }
+   .online-buying{
+      .product-list{
+         margin: 3rem auto 0 !important;
+      }
+   }
+   .product-page{
+      .product-list{
+         margin: auto;
+      }
+   }
+   .product-detail-page{
+      .mid-center{
+         position: relative;
+         transform: none;
+         top: auto;
+         left: auto;
+         margin-top: 0 !important;
+         padding: 60px 0 30px;
+      }
+      .col-md-4{
+         img{
+            max-width: 150px;
+         }
+      }
+      .col-md-8{
+         .mid-center{
+            padding: 15px 0;
+         }
+      }
+   }
+   .newspro-list{
+      margin:auto !important;
+      .col-md-4{
+         margin-bottom: 15px;
+      }
+   }
+}
