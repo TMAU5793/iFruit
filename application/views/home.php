@@ -36,13 +36,13 @@
             <h2 class="ff_rukdeaw font-h2">ข่าวสารและโปรโมชั่น</h2>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div><?php echo image_asset('home/promotion-1.jpg'); ?></div>
+            <div><?php echo image_asset('news/t-promotion-1.jpg'); ?></div>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div><?php echo image_asset('home/promotion-2.jpg'); ?></div>
+            <div><?php echo image_asset('news/t-promotion-2.jpg'); ?></div>
          </div>
          <div class="col-md-4 col-sm-6 col-xs-6">
-            <div><?php echo image_asset('home/promotion-1.jpg'); ?></div>
+            <div><?php echo image_asset('news/t-promotion-3.jpg'); ?></div>
          </div>
       </div>
    </div>
