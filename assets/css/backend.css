@@ -1,0 +1,175 @@
+body {
+  font-family: 'sukhumvit_settext' !important; }
+
+.brand-link .brand-image {
+  width: 100%;
+  max-width: 75px; }
+
+.btn-create {
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  display: inline-block; }
+
+.qr-view .content .input-group-prepend {
+  width: 100%; }
+  .qr-view .content .input-group-prepend .input-group-text {
+    border-radius: 5px;
+    width: 100%; }
+
+.btn-i-download {
+  border: none;
+  background-color: transparent; }
+  .btn-i-download :hover {
+    color: #28a745; }
+
+.gray-bg {
+  background-color: #d7d7d7 !important; }
+
+.frm-filter {
+  border: 1px solid #dee2e6;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: #6c6b6a;
+  color: #fff; }
+
+.login-page {
+  background-color: #38a36b; }
+  .login-page .card {
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -51%);
+    background: transparent;
+    border: none;
+    padding: 0 30px; }
+    .login-page .card .card-body {
+      background-color: rgba(0, 0, 0, 0.5) !important;
+      border-radius: 6px; }
+      .login-page .card .card-body h3 {
+        color: #fff; }
+  .login-page .card-header h3 {
+    color: white; }
+  .login-page .input-group-prepend span {
+    width: 50px;
+    background-color: #ffe26a;
+    color: black;
+    border: 0 !important; }
+  .login-page input:focus {
+    outline: 0 0 0 0  !important;
+    box-shadow: 0 0 0 0 !important; }
+  .login-page .login_btn {
+    color: black;
+    background-color: #ffe26a;
+    width: 100px; }
+  .login-page .login_btn:hover {
+    color: black;
+    background-color: white; }
+  .login-page .input-group-prepend i {
+    margin: auto; }
+
+[class*="sidebar-dark-"] {
+  background-color: #262b3e !important; }
+
+.sidebar-dark-primary .nav-sidebar > .nav-item > .nav-link.active,
+.sidebar-light-primary .nav-sidebar > .nav-item > .nav-link.active {
+  background-color: #c9b38c !important;
+  color: #343a40 !important; }
+
+.fa-trash-alt:hover {
+  color: #ff0000;
+  cursor: pointer; }
+
+.thumbnail-section input[type="file"] {
+  visibility: hidden;
+  height: 0; }
+.thumbnail-section .img-select {
+  cursor: pointer;
+  padding: 5px 15px;
+  max-width: 250px;
+  width: 100%;
+  text-align: center; }
+
+.btn-manage-fixed {
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: #262b3e;
+  width: 100%;
+  padding: 10px 105px;
+  z-index: 999; }
+
+.fa-edit {
+  color: #000000; }
+
+.fa-edit:hover {
+  color: #ffc107; }
+
+.ck.ck-editor__main > .ck-editor__editable {
+  height: 150px;
+  overflow-y: auto; }
+
+.editor_description .ck.ck-editor__main > .ck-editor__editable {
+  height: 400px !important;
+  overflow-y: auto; }
+.editor_description .cke_contents {
+  height: 300px !important; }
+
+.status-true {
+  width: 15px;
+  height: 15px;
+  background-color: #28a745;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5); }
+
+.status-false {
+  width: 15px;
+  height: 15px;
+  background-color: #ffc107;
+  border-radius: 50%;
+  -webkit-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: inset 0px 0px 2px 0px rgba(0, 0, 0, 0.5); }
+
+.file-caption {
+  visibility: hidden; }
+
+.remove-img {
+  background-color: #dc3545;
+  border-radius: 50px;
+  color: #fff;
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  cursor: pointer;
+  transition: all .25s; }
+  .remove-img i {
+    position: relative;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); }
+
+.remove-img:hover {
+  width: 35px;
+  height: 35px;
+  transition: all .25s;
+  color: #fff; }
+
+.oline-none {
+  outline: none !important; }
+
+.list-gallery {
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 6px; }
+
+/*# sourceMappingURL=backend.css.map */
