@@ -47,8 +47,7 @@ class Product extends CI_Controller {
 		}else{
 			$data['page'] = "";
 		}
-		$hdata['meta_title'] = 'Product Manage';
-		$data['position'] = $this->Productmodel->getPosition();
+		$hdata['meta_title'] = 'Product Manage';		
 		$this->load->view('admin/header',$hdata);
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/product',$data);
@@ -88,8 +87,7 @@ class Product extends CI_Controller {
 			$data['page'] = "/".$this->uri->segment(4);
 		}else{
 			$data['page'] = "";
-		}
-		$data['position'] = $this->Productmodel->getPosition();
+		}		
 		$this->load->view('admin/header');
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/product',$data);
@@ -168,8 +166,7 @@ class Product extends CI_Controller {
 	public function edit()
 	{
 		$data['action'] = "update";
-		$data['info'] = $this->Productmodel->getProductById($this->uri->segment(4));
-		$data['position'] = $this->Productmodel->getPosition();
+		$data['info'] = $this->Productmodel->getProductById($this->uri->segment(4));		
 		$this->load->view('admin/header');
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/product-form',$data);
@@ -187,8 +184,7 @@ class Product extends CI_Controller {
 			$hd_id = $this->input->post('hd_id');
 			if($hd_id!=""){
 				$data['action'] = "update";
-				$data['info'] = $this->Productmodel->getProductById($this->input->post('hd_id'));
-				$data['position'] = $this->Productmodel->getPosition();
+				$data['info'] = $this->Productmodel->getProductById($this->input->post('hd_id'));				
 				$this->load->view('admin/header');
 				$this->load->view('admin/nav-menu');
 				$this->load->view('admin/product-form',$data);
@@ -259,7 +255,7 @@ class Product extends CI_Controller {
 			)
 		);
 		$this->form_validation->set_rules($ar);
-		$this->form_validation->set_message('required', '{field} กรุณากรอกข้อมุล');
+		$this->form_validation->set_message('required', '{field} กรุณากรอกข้อมูล');
 		if ($this->form_validation->run() == FALSE){			
 			return false;
 		}else{

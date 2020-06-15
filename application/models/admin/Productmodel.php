@@ -333,19 +333,5 @@
          }
       }
 
-      public function getPosition()
-      {
-         $this->db->select('*');
-         $this->db->from('tbl_position');
-         $this->db->where('status','1');
-         $this->db->order_by('rec_date','ASC');
-         $query=$this->db->get();
-         if($query->num_rows()>0){
-            return $query->result_array();
-         }else{
-            return false;
-         }
-      }
-
    }
 ?>

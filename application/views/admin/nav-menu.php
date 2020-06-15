@@ -25,9 +25,9 @@
                </a>
             </li>
             <li class="nav-item has-treeview menu-open">
-               <a href="<?php echo base_url('admin/Promotion'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Promotion')? 'active':'';?>">
+               <a href="<?php echo base_url('admin/Newspromotion'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Newspromotion')? 'active':'';?>">
                   <i class="nav-icon fas fa-gift"></i>
-                  <p>โปรโมชั่น</p>
+                  <p>ข่าวสาร และโปรโมชั่น</p>
                </a>
             </li>
             <!--li class="nav-item has-treeview menu-open">

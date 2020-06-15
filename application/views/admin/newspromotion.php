@@ -4,11 +4,11 @@
       <div class="container">
          <div class="row mb-2">
             <div class="col-sm-6">
-               <h1 class="m-0 text-dark">ข้อมูลโปรโมชั่น</h1></h1>
+               <h1 class="m-0 text-dark">ข้อมูลข่าวสาร โปรโมชั่น</h1></h1>
             </div>
             <div class="col-sm-6">
                <div class="text-right">
-                  <a href="<?php echo base_url('admin/Promotion/form'); ?>" type="button" class="btn btn-create btn-success">เพิ่มใหม่</a>
+                  <a href="<?php echo base_url('admin/Newspromotion/form'); ?>" type="button" class="btn btn-create btn-success">เพิ่มใหม่</a>
                </div>
             </div>
          </div>
@@ -22,9 +22,10 @@
             <thead>
                <tr>
                   <td width="50">ลำดับ</td>
-                  <td>ชื่อโปรโมชั่น</td>
+                  <td>ชื่อข่าวสาร โปรโมชั่น</td>
                   <td width="150" align="center">เริ่มใช้งานโปรโมชั่น</td>
                   <td width="150" align="center">สิ้นสุดโปรโมชั่น</td>
+                  <td width="100" align="center">สถานะ</td>
                   <td width="100" align="center">การจัดการ</td>
                </tr>
             </thead>
@@ -36,20 +37,21 @@
                ?>
                <tr>
                   <td align="center"><?php echo $i; ?></td>
-                  <td><?php echo $item['title']; ?></td>
+                  <td><?php echo $item['np_name']; ?></td>                  
+                  <td align="center"><?php echo ($item['np_type']==2 ? $item['np_start'] : '-'); ?></td>
+                  <td align="center"><?php echo ($item['np_type']==2 ? $item['np_end'] : '-'); ?></td>
                   <td align="center">
-                     <div class="<?php echo ($item['status'] == '1' ? 'status-true' : 'status-false'); ?>"></div>
+                     <div class="<?php echo ($item['np_status'] == '1' ? 'status-true' : 'status-false'); ?>"></div>
                   </td>
-                  <td></td>
                   <td align="center" class="manage-list">
-                     <a href="<?php echo base_url('admin/Promotion/edit/'.$item['id']); ?>" class="view mr-3">
+                     <a href="<?php echo base_url('admin/Newspromotion/edit/'.$item['np_id']); ?>" class="view mr-3">
                         <i class="far fa-edit"></i>
                      </a>
-                     <i class="far fa-trash-alt" onClick="Delete('<?php echo base_url("admin/Promotion/Delete"); ?>','Work','<?php echo $item['id']; ?>');"></i>
+                     <i class="far fa-trash-alt" onClick="Delete('<?php echo base_url("admin/Newspromotion/Delete"); ?>','Work','<?php echo $item['np_id']; ?>');"></i>
                   </td>
                </tr>
                <?php $i++;} }else{ ?>
-               <tr><td align="center" colspan="5">ยังไม่มีข้อมูล <a href="<?php echo base_url('admin/Promotion/form'); ?>">เพิ่มข้อมูล</a></td></tr>
+               <tr><td align="center" colspan="5">ยังไม่มีข้อมูล <a href="<?php echo base_url('admin/Newspromotion/form'); ?>">เพิ่มข้อมูล</a></td></tr>
                <?php } ?>
             </tbody>
          </table>
