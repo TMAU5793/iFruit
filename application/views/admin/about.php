@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                <label for="">รูป</label>
-               <small class="d-block mb-2">*ขนาดรูปที่แนะนำ 1200 x 680 px</small>
+               <small class="d-block mb-2">*ขนาดรูปที่แนะนำ 500 x 400 px</small>
                <div class="thumbnail-section">
                   <img src="<?php echo (isset($info->thumbnail) ? base_url($info->thumbnail) : base_url('assets/images/default.png')); ?>" width="250" id="show_img">
                   <input type="file" class="d-block" name="thumbnail" id="thumbnail">
@@ -39,14 +39,10 @@
    </section>
 </div>
 
-<!-- Control Sidebar -->
-<aside class="control-sidebar control-sidebar-dark">
-   <!-- Control sidebar content goes here -->
-</aside>
-<!-- /.control-sidebar -->
-<script src="<?php echo base_url('node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js'); ?>"></script>
+<aside class="control-sidebar control-sidebar-dark"></aside>
+
+<script src="<?php echo base_url('assets/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') ?>"></script>
 <script>
-   //import $ from '../../../node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor';   
    $(function(){      
       $("#thumbnail").change(function () {
          readURL(this);

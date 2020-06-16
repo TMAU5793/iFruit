@@ -47,7 +47,7 @@ class Banner extends CI_Controller {
 		}else{
 			$data['page'] = "";
 		}
-		$hdata['meta_title'] = 'Nitipeerachat Banner';
+		$hdata['meta_title'] = 'iFruit Banner';
 		$this->load->view('admin/header',$hdata);
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/banner',$data);
@@ -88,57 +88,12 @@ class Banner extends CI_Controller {
 		}else{
 			$data['page'] = "";
       }
-      $hdata['meta_title'] = 'Nitipeerachat Banner';
+      $hdata['meta_title'] = 'iFruit Banner';
 		$this->load->view('admin/header');
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/banner',$data);
 		$this->load->view('admin/footer');
-	}
-
-	public function Filter()
-	{
-		if($this->input->post('txt_title')=="" && $this->input->post('ddl_recommend')==""){			
-			redirect('admin/Banner');
-		}else{
-			$data['total_num']=$this->Bannermodel->FilterTotal($this->input->post());
-			$config['base_url'] = base_url()."admin/Banner/page";
-			$config['total_rows'] = $this->Bannermodel->FilterTotal($this->input->post());
-			$config['per_page'] =25;
-			$config['num_links'] =9;
-			$data['start']=0;
-			$config['full_tag_open'] = "<ul class='pagination'>";
-			$config['full_tag_close'] ="</ul>";
-			$config['num_tag_open'] = '<li>';
-			$config['num_tag_close'] = '</li>';
-			$config['cur_tag_open'] = "<li class='disabled'><li class='active'><a href='#'>";
-			$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
-			$config['next_tag_open'] = "<li>";
-			$config['next_tagl_close'] = "</li>";
-			$config['prev_tag_open'] = "<li>";
-			$config['prev_tagl_close'] = "</li>";
-			$config['first_tag_open'] = "<li>";
-			$config['first_tagl_close'] = "</li>";
-			$config['last_tag_open'] = "<li>";
-			$config['last_tagl_close'] = "</li>";
-			$config['first_link'] = "<span aria-hidden=\"true\">&laquo;</span>";
-			$config['last_link'] = "<span aria-hidden=\"true\">&raquo;</span>";
-			$this->pagination->initialize($config);
-			if($this->uri->segment(4)!=false){
-				$data['start']=$this->uri->segment(4);
-			}
-			$data['info'] = $this->Bannermodel->Filter($data['start'],$this->input->post());
-			if($this->uri->segment(4)){
-				$data['page'] = "/".$this->uri->segment(4);
-			}else{
-				$data['page'] = "";
-         }
-         $hdata['meta_title'] = 'Nitipeerachat Banner';
-			$this->load->view('admin/header');
-			$this->load->view('admin/nav-menu');
-			$this->load->view('admin/banner',$data);
-			$this->load->view('admin/footer');		
-		}
-	}
+	}	
 
 	public function form()
 	{

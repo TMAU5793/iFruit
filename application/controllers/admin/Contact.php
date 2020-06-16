@@ -15,7 +15,7 @@ class Contact extends CI_Controller {
 	public function index()
 	{
 		$data['info'] = $this->Optionmodel->getOption('contact');
-		$hdata['meta_title'] = 'Nitipeechat Home';
+		$hdata['meta_title'] = 'iFruit Contact';
 		$this->load->view('admin/header',$hdata);
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/contact',$data);
@@ -35,7 +35,7 @@ class Contact extends CI_Controller {
 			}
 		}else{
 			$data['info'] = $this->Optionmodel->getOption('contact');
-         $hdata['meta_title'] = 'Nitipeechat Home';
+         $hdata['meta_title'] = 'iFruit Contact';
          $this->load->view('admin/header',$hdata);
          $this->load->view('admin/nav-menu');
          $this->load->view('admin/contact',$data);
@@ -58,16 +58,6 @@ class Contact extends CI_Controller {
          array(
 				'field'=>'txt_tel',
 				'label'=>'เบอร์โทร',
-				'rules'=>'trim|required'
-         ),
-         array(
-				'field'=>'txt_fax',
-				'label'=>'เบอร์โทรสาร',
-				'rules'=>'trim|required'
-         ),
-         array(
-				'field'=>'txt_web',
-				'label'=>'เว็บไซต์',
 				'rules'=>'trim|required'
          )
 		);

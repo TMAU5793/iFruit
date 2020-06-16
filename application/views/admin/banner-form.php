@@ -29,20 +29,14 @@
             <div class="form-group">
                <label for="ddl_page">แสดงที่หน้า *</label>
                <select name="ddl_page" id="ddl_page" class="form-control">
-                  <option value="">-- แสดงที่หน้า --</option>
                   <option value="home" <?php echo (isset($info) ? ($info->page == 'home' ? 'selected=selected' : '') : ''); ?>>หน้าแรก</option>
-                  <option value="about" <?php echo (isset($info) ? ($info->page == 'about' ? 'selected=selected' : '') : ''); ?>>เกี่ยวกับเรา</option>
-                  <option value="executive" <?php echo (isset($info) ? ($info->page == 'executive' ? 'selected=selected' : '') : ''); ?>>ประวัติผู้บริหาร</option>
-                  <option value="service" <?php echo (isset($info) ? ($info->page == 'service' ? 'selected=selected' : '') : ''); ?>>บริการของเรา</option>
-                  <option value="work" <?php echo (isset($info) ? ($info->page == 'work' ? 'selected=selected' : '') : ''); ?>>ผลงานของเรา</option>
-                  <option value="contact" <?php echo (isset($info) ? ($info->page == 'contact' ? 'selected=selected' : '') : ''); ?>>ติดต่อเรา</option>
                </select>
                <?php echo form_error('ddl_page', '<div class="text-danger small">*', '</div>'); ?>
             </div>
             <div class="row form-group">
                <div class="col-md-6">
                   <label for="">รูป (Desktop)</label>
-                  <small class="d-block mb-2" id="d-size">*ขนาดรูปที่แนะนำ 1920 x 500 px</small>
+                  <small class="d-block mb-2" id="d-size">*ขนาดรูปที่แนะนำ 1920 x 1080 px</small>
                   <div class="thumbnail-section">
                      <img src="<?php echo (isset($info->images_desktop) ? base_url($info->images_desktop) : base_url('assets/images/default.png')); ?>" width="250" id="show_img">
                      <input type="file" class="d-block" name="thumbnail" id="thumbnail">
@@ -96,19 +90,6 @@
          readURL(this,'show_img_mb');
          let file = $("#thumbnail_mobile")[0].files[0];
          $('#hd_file_img_mb').val(file.name);
-      });
-
-      let result = $('#ddl_page').val();
-      if(result=='home'){
-         $('#d-size').html('*ขนาดรูปที่แนะนำ 1920 x 970 px');
-      }
-      $('#ddl_page').on('change',function(){
-         result = $(this).val();
-         if(result=='home'){
-            $('#d-size').html('*ขนาดรูปที่แนะนำ 1920 x 970 px');
-         }else{
-            $('#d-size').html('*ขนาดรูปที่แนะนำ 1920 x 500 px');
-         }
       });
 
       $('#btn_submit').on('click',function(){

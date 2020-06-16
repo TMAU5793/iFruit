@@ -15,7 +15,7 @@ class About extends CI_Controller {
 	public function index()
 	{
 		$data['info'] = $this->Optionmodel->getOption('about');
-		$hdata['meta_title'] = 'Nitipeechat About';
+		$hdata['meta_title'] = 'iFruit About';
 		$this->load->view('admin/header',$hdata);
 		$this->load->view('admin/nav-menu');
 		$this->load->view('admin/about',$data);
@@ -25,8 +25,8 @@ class About extends CI_Controller {
 	public function update()
 	{
 		if ($this->ChackValidateForm()) {
-         $imgWidth = 1200;
-         $imgHeight = 680;
+         $imgWidth = 500;
+         $imgHeight = 400;
          if($this->input->post('hd_id')==""){
             $result = $this->Optionmodel->addContent($this->input->post(),'about',$imgWidth,$imgHeight);
          }else{

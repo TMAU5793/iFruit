@@ -27,25 +27,42 @@
                <textarea name="txt_address" id="txt_address" name="txt_address" class="form-control"><?php echo (isset($info->address) ? $info->address : set_value('txt_address')); ?></textarea>
                <?php echo form_error('txt_address', '<div class="text-danger small">*', '</div>'); ?>
             </div>
-            <div class="form-group">
-               <label for="txt_email">อีเมล</label>
-               <input type="email" class="form-control" id="txt_email" name="txt_email" placeholder="exam@mail.com" value="<?php echo (isset($info->contact_mail) ? $info->contact_mail : set_value('txt_email')); ?>" require>
-               <?php echo form_error('txt_email', '<div class="text-danger small">*', '</div>'); ?>
-            </div>
-            <div class="form-group">
-               <label for="txt_tel">เบอร์โทร</label>
-               <input type="text" class="form-control" id="txt_tel" name="txt_tel" placeholder="0987654321" value="<?php echo (isset($info->contact_tel) ? $info->contact_tel : set_value('txt_tel')); ?>" require>
-               <?php echo form_error('txt_tel', '<div class="text-danger small">*', '</div>'); ?>
-            </div>
-            <div class="form-group">
-               <label for="txt_fax">เบอร์โทรสาร</label>
-               <input type="text" class="form-control" id="txt_fax" name="txt_fax" placeholder="023456789" value="<?php echo (isset($info->contact_fax) ? $info->contact_fax : set_value('txt_fax')); ?>" require>
-               <?php echo form_error('txt_fax', '<div class="text-danger small">*', '</div>'); ?>
-            </div>
-            <div class="form-group">
-               <label for="txt_web">เว็บไซต์</label>
-               <input type="text" class="form-control" id="txt_web" name="txt_web" placeholder="www.exam.com" value="<?php echo (isset($info->contact_web) ? $info->contact_web : set_value('txt_web')); ?>" require>
-               <?php echo form_error('txt_web', '<div class="text-danger small">*', '</div>'); ?>
+            <div class="row">
+               <div class="col-md-6 form-group">
+                  <label for="txt_email">อีเมล</label>
+                  <input type="email" class="form-control" id="txt_email" name="txt_email" value="<?php echo (isset($info->contact_mail) ? $info->contact_mail : set_value('txt_email')); ?>" require>
+                  <?php echo form_error('txt_email', '<div class="text-danger small">*', '</div>'); ?>
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_tel">เบอร์โทร</label>
+                  <input type="text" class="form-control" id="txt_tel" name="txt_tel" value="<?php echo (isset($info->contact_tel) ? $info->contact_tel : set_value('txt_tel')); ?>" require>
+                  <?php echo form_error('txt_tel', '<div class="text-danger small">*', '</div>'); ?>
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_fax">เบอร์โทรสาร</label>
+                  <input type="text" class="form-control" id="txt_fax" name="txt_fax" value="<?php echo (isset($info->contact_fax) ? $info->contact_fax : set_value('txt_fax')); ?>" require>
+                  <?php echo form_error('txt_fax', '<div class="text-danger small">*', '</div>'); ?>
+               </div>            
+               <div class="col-md-6 form-group">
+                  <label for="txt_line">Line ID</label>
+                  <input type="text" class="form-control" id="txt_line" name="txt_line" value="<?php echo (isset($info->contact_line) ? $info->contact_line : set_value('txt_line')); ?>">
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_facebook">Facebook</label>
+                  <input type="text" class="form-control" id="txt_facebook" name="txt_facebook" value="<?php echo (isset($info->contact_facebook) ? $info->contact_facebook : set_value('txt_facebook')); ?>">
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_instagram">Instagram</label>
+                  <input type="text" class="form-control" id="txt_instagram" name="txt_instagram" value="<?php echo (isset($info->contact_instagram) ? $info->contact_instagram : set_value('txt_instagram')); ?>">
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_youtube">Youtube chanel</label>
+                  <input type="text" class="form-control" id="txt_youtube" name="txt_youtube" value="<?php echo (isset($info->contact_youtube) ? $info->contact_youtube : set_value('txt_youtube')); ?>">
+               </div>
+               <div class="col-md-6 form-group">
+                  <label for="txt_web">Website</label>
+                  <input type="text" class="form-control" id="txt_web" name="txt_web" value="<?php echo (isset($info->contact_web) ? $info->contact_web : set_value('txt_web')); ?>">
+               </div>
             </div>
          </form>
       </div>

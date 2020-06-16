@@ -30,12 +30,6 @@
                   <p>ข่าวสาร และโปรโมชั่น</p>
                </a>
             </li>
-            <!--li class="nav-item has-treeview menu-open">
-               <a href="<?php echo base_url('admin/Home/form'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Home')? 'active':'';?>">
-                  <i class="nav-icon fas fa-home"></i>
-                  <p>หน้าแรก</p>
-               </a>
-            </!--li>
             <li class="nav-item has-treeview menu-open">
                <a href="<?php echo base_url('admin/About'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='About')? 'active':'';?>">
                   <i class="nav-icon fas fa-file-signature"></i>
@@ -43,35 +37,23 @@
                </a>
             </li>
             <li class="nav-item has-treeview menu-open">
-               <a href="<?php echo base_url('admin/Service'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Service')? 'active':'';?>">
-                  <i class="nav-icon fas fa-hand-holding"></i>
-                  <p>บริการ</p>
-               </a>
-            </li>
-            <li class="nav-item has-treeview menu-open">
-               <a href="<?php echo base_url('admin/Work'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Work')? 'active':'';?>">
-                  <i class="nav-icon fas fa-praying-hands"></i>
-                  <p>ผลงาน</p>
-               </a>
-            </li>
-            <li class="nav-item has-treeview menu-open">
                <a href="<?php echo base_url('admin/Contact'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Contact')? 'active':'';?>">
                   <i class="nav-icon fas fa-tty"></i>
                   <p>ข้อมูลติดต่อ</p>
                </a>
-            </li>
+            </li>      
             <li class="nav-item has-treeview menu-open">
                <a href="<?php echo base_url('admin/Banner'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Banner')? 'active':'';?>">
                   <i class="nav-icon fas fa-image"></i>
-                  <p>แบนเนอร์</p>
+                  <p>สไลด์แบนเนอร์ (หน้าแรก)</p>
                </a>
             </li>
-            <li-- class="nav-item has-treeview menu-open">
-               <a href="<?php echo base_url('admin/Gallery/addimages'); ?>" class="nav-link <?php echo ($this->router->fetch_class()=='Gallery')? 'active':'';?>">
-                  <i class="nav-icon fas fa-images"></i>
-                  <p>แกลลอรี่</p>
+            <li class="nav-item has-treeview menu-open">
+               <a href="<?php echo base_url('admin/Logout'); ?>" class="nav-link">
+                  <i class="nav-icon fas fa-sign-out-alt"></i>
+                  <p>ออกจากระบบ</p>
                </a>
-            </li-->
+            </li>
          </ul>
       </nav>
       <!-- /.sidebar-menu -->

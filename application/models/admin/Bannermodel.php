@@ -6,11 +6,6 @@
          if($this->session->userdata('logged_in'))
          {
             $session_data = $this->session->userdata('logged_in');
-         }         
-         if($data['ddl_page']=="home"){
-            $bh = 970;
-         }else{
-            $bh = 500;
          }
          $date = new DateTime();
          $data_info=array(
@@ -26,14 +21,18 @@
             $new_id = $this->db->insert_id();
             if(isset($_FILES['thumbnail']['name']) && !empty($_FILES['thumbnail']['name'])){          
                if (!is_dir('uploads/banner/'.$new_id)) {
-                  mkdir('uploads/banner/'.$new_id, 0777, TRUE);             
-                  $this->Upload($new_id,"thumbnail",1920,$bh);
+                  mkdir('uploads/banner/'.$new_id, 0777, TRUE);
+                  $this->Upload($new_id,"thumbnail",1920,1080);
+               }else{
+                  $this->Upload($new_id,"thumbnail",1920,1080);
                }
             }
             if(isset($_FILES['thumbnail_mobile']['name']) && !empty($_FILES['thumbnail_mobile']['name'])){          
                if (!is_dir('uploads/banner/'.$new_id)) {
                   mkdir('uploads/banner/'.$new_id, 0777, TRUE);             
-                  $this->UploadMobile($new_id,"thumbnail_mobile",1000,650);            
+                  $this->UploadMobile($new_id,"thumbnail_mobile",1000,650);
+               }else{
+                  $this->UploadMobile($new_id,"thumbnail_mobile",1000,650);
                }
             }
             return true;            
@@ -47,12 +46,6 @@
          if($this->session->userdata('logged_in'))
          {
             $session_data = $this->session->userdata('logged_in');
-         } 
-         
-         if($data['ddl_page']=="home"){
-            $bh = 970;
-         }else{
-            $bh = 500;
          }
          $date = new DateTime();
          $data_info=array(
@@ -69,9 +62,9 @@
             if(isset($_FILES['thumbnail']['name']) && !empty($_FILES['thumbnail']['name'])) {
                if (!is_dir('uploads/banner/'.$data['hd_id'])) {
                   mkdir('uploads/banner/'.$data['hd_id'], 0777, TRUE);               
-                  $this->Upload($data['hd_id'],"thumbnail",1920,$bh);
+                  $this->Upload($data['hd_id'],"thumbnail",1920,1080);
                }else{
-                  $this->Upload($data['hd_id'],"thumbnail",1920,$bh);
+                  $this->Upload($data['hd_id'],"thumbnail",1920,1080);
                   if(file_exists($data['img_remove'])){
                      unlink($data['img_remove']);
                   }
@@ -224,7 +217,7 @@
                $m_config2['source_image'] ='uploads/banner/'.$id."/".$fname;       
                $m_config2['maintain_ratio'] = TRUE;
                $m_config2['master_dim'] = 'height'; // add new set dimansions fix width
-               $m_config2['height'] = $w;
+               $m_config2['height'] = $h;
                $m_config2['new_image'] ='uploads/banner/'.$id."/".$fname;          
                $this->image_lib->initialize($m_config2);
                if(!$this->image_lib->resize())
