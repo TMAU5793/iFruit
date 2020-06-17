@@ -153,7 +153,7 @@
 
       ClassicEditor
 		.create( document.querySelector( '#txt_description' ), {
-			//toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]
 		} )
 		.then( editor => {
 			window.editor = editor;

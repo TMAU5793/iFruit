@@ -421,9 +421,9 @@ a:hover {
 
 .online-buying {
   background-image: url("../images/home/online-buying-bg.jpg");
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
   background-position: center center;
-  background-size: cover; }
+  background-size: 100%; }
   .online-buying img {
     width: 100%;
     max-width: 300px; }
@@ -454,7 +454,11 @@ a:hover {
   .product-page img {
     width: 100%; }
   .product-page .product-list {
-    margin-top: 9rem; }
+    margin-top: 6rem; }
+
+.product-detail-page .container {
+  margin: 5rem auto;
+  color: #000000; }
 
 .bg-gray {
   background-color: #7e807f; }
@@ -462,8 +466,7 @@ a:hover {
 .prduct-banner-detail {
   text-align: center; }
   .prduct-banner-detail img {
-    width: 100%;
-    max-width: 1440px; }
+    width: 100%; }
 
 .gradient-red {
   background: #4b1617;
@@ -480,9 +483,21 @@ a:hover {
   background-position: top center;
   background-size: cover; }
   .newspromotion-page img {
-    width: 100%; }
+    width: 100%;
+    cursor: pointer; }
+  .newspromotion-page .news-list .news-img {
+    overflow: hidden;
+    border-radius: 10px; }
   .newspromotion-page .news-list .col-md-4 {
     margin-bottom: 30px; }
+    .newspromotion-page .news-list .col-md-4 img {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: .3s ease-in-out;
+      transition: .3s ease-in-out; }
+  .newspromotion-page .news-list .col-md-4:hover img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2); }
 
 .newspromotion-desc {
   background-image: url("../images/home/news-promotion-bg.jpg");
@@ -493,12 +508,12 @@ a:hover {
     margin: auto; }
     .newspromotion-desc .news-list .news-img img {
       width: 100%;
-      max-width: 450px; }
+      max-width: 450px;
+      border-radius: 10px; }
 
 .newspro-desc {
   background-image: url("../images/news/desc-bg.png");
   background-repeat: no-repeat;
-  background-position: center;
   background-size: cover;
   color: #000000;
   padding: 1rem 12rem 1rem 5rem; }
@@ -586,5 +601,39 @@ a:hover {
   width: 100%; }
 .newspro-list .col-12 {
   margin-bottom: 8rem; }
+
+.error {
+  color: #ff0000; }
+
+#loader {
+  display: none;
+  margin: auto;
+  border: 10px solid #129647;
+  border-radius: 50%;
+  border-top: 10px solid #ffe26a;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  /* Safari */
+  animation: spin 2s linear infinite; }
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+#contactflase {
+  text-align: center;
+  background: #129647;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-family: 'sukhumvit_setmedium';
+  font-size: 20px; }
 
 /*# sourceMappingURL=ifruit.css.map */

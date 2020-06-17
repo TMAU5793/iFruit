@@ -23,6 +23,7 @@
                <tr>
                   <td width="50">ลำดับ</td>
                   <td>ชื่อข่าวสาร โปรโมชั่น</td>
+                  <td width="150" align="center">ประเภทบทความ</td>
                   <td width="150" align="center">เริ่มใช้งานโปรโมชั่น</td>
                   <td width="150" align="center">สิ้นสุดโปรโมชั่น</td>
                   <td width="100" align="center">สถานะ</td>
@@ -37,7 +38,8 @@
                ?>
                <tr>
                   <td align="center"><?php echo $i; ?></td>
-                  <td><?php echo $item['np_name']; ?></td>                  
+                  <td><?php echo $item['np_name']; ?></td>
+                  <td align="center"><?php echo ($item['np_type']==2 ? 'โปรโมชั่น' : 'ข่าวสาร'); ?></td>
                   <td align="center"><?php echo ($item['np_type']==2 ? $item['np_start'] : '-'); ?></td>
                   <td align="center"><?php echo ($item['np_type']==2 ? $item['np_end'] : '-'); ?></td>
                   <td align="center">

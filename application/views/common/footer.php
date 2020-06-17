@@ -40,7 +40,7 @@
 			</div>
 		</div>
 	</footer>
-	<?php echo js_asset('jquery.min.js'); ?>
+	
 	<?php echo js_asset('bootstrap.min.js'); ?>
 	<?php echo js_asset('script.js'); ?>
 	<script src="<?php echo base_url('assets/slick/slick/slick.min.js'); ?>"></script>

@@ -154,7 +154,7 @@
                { 
                   $response = $this->upload->display_errors();
                }else{
-                  $this->createimage->createlarg($path,$w,$h);
+                  $this->createimage->createlargNobg($path,$w,$h);
                   $response = $this->upload->data();
                }
             }else if($height>$h){ //add New  check image width
@@ -170,11 +170,11 @@
                { 
                   $response = $this->upload->display_errors();
                }else{
-                  $this->createimage->createlarg($path,$w,$h);
+                  $this->createimage->createlargNobg($path,$w,$h);
                   $response = $this->upload->data();
                }
             }else{
-               $this->createimage->createlarg($path,$w,$h);
+               $this->createimage->createlargNobg($path,$w,$h);
                $response = $this->upload->data();
             }
             $data_info_file=array(

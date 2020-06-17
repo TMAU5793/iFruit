@@ -5,13 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="iFruit">
-	<title>iFruit</title>
+	<title><?php echo (isset($metatitle) ? $metatitle : 'iFruit brand'); ?></title>
 	<link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/sukhumvit/font.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/rukdeaw/font.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/thunder/font.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/slick/slick/slick.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/slick/slick/slick-theme.css'); ?>">
+	<?php echo js_asset('jquery.min.js'); ?>
 	<?php echo css_asset('bootstrap.min.css'); ?>
 	<?php echo css_asset('ifruit.css'); ?>	
 </head>
