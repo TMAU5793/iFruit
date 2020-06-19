@@ -15,12 +15,12 @@ class Contact extends CI_Controller {
       $this->load->view('contact',$data);
       $this->load->view('common/footer');
 	}
-	public function sendmail()
+	public function testmail()
 	{
 		print_r($this->input->post());
 		$data['success'] = "success";
 	}
-	public function sendmail2()
+	public function sendmail()
 	{
 		$data = $this->input->post();
 		$config = Array(

@@ -52,7 +52,6 @@
             'name'=>strip_tags($data['txt_name']),
             'page'=>strip_tags($data['ddl_page']),
             'status'=>strip_tags($data['ddl_status']),
-            'status'=>strip_tags($data['ddl_status']),
             'update_by'=>$session_data['account'],
             'update_date'=>date_format($date, 'Y-m-d H:i:s')
          );

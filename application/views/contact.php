@@ -102,14 +102,14 @@
             $('#loader').show();
             $.ajax({
                type: "POST",
-               url: "<?php echo base_url('Contact/sendmail2'); ?>",
+               url: "<?php echo base_url('Contact/sendmail'); ?>",
                data: $(form).serialize(),
                success: function() {
                   $('#loader').hide();
                   $('.btn-send').show();
                   setTimeout(function() {
                      $("#contactflase").html('ส่งข้อมูลเรียบร้อย');
-                     $("#contactflase").show();
+                     $("#contactflase").removeClass('d-none');
                   }, 3000);
                   form.reset();
                },
@@ -118,7 +118,7 @@
                   $('.btn-send').show();
                   setTimeout(function() {
                      $("#contactflase").html('เกิดข้อผิดพลาดในการส่งข้อมูล');
-                     $("#contactflase").show();
+                     $("#contactflase").removeClass('d-none');
                   }, 3000);
                }
             });
