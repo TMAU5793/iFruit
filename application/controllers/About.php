@@ -10,8 +10,9 @@ class About extends CI_Controller {
 	public function index()
 	{
 		$data['info'] = $this->Utilitymodel->getOptionTable($page='about');
+		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
       $this->load->view('common/header');
       $this->load->view('about',$data);
-      $this->load->view('common/footer');
+      $this->load->view('common/footer',$fdata);
 	}
 }

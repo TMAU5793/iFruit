@@ -33,12 +33,22 @@
                   <input class="form-check-input" type="radio" name="txt_type" id="txt_type2" value="2" <?php echo (isset($infotype) ? ($infotype==2 ? 'checked' : '') : ''); ?>>
                   <label class="form-check-label" for="txt_type2">โปรโมชั่น</label>
                </div>
+               <div class="form-check form-check-inline">
+                  <input class="form-check-input" type="radio" name="txt_type" id="txt_type3" value="3" <?php echo (isset($infotype) ? ($infotype==3 ? 'checked' : '') : ''); ?>>
+                  <label class="form-check-label" for="txt_type2">ลิงค์</label>
+               </div>
             </div>
             <div class="type-content d-none">
                <div class="form-group">
                   <label for="txt_name">ชื่อข่าวสาร โปรโมชั่น *</label>
                   <input type="text" class="form-control" id="txt_name" name="txt_name" placeholder="ตัวอย่าง : ซื้อ 2 แถม 1" value="<?php echo (isset($info->np_name) ? $info->np_name : set_value('txt_name')); ?>">
                   <?php echo form_error('txt_name', '<div class="text-danger small">*', '</div>'); ?>
+               </div>
+               <div class="form-group link-url d-none">
+                  <label for="txt_link">ลิงค์บทความ *</label>
+                  <input type="text" class="form-control" id="txt_link" name="txt_link" value="<?php echo (isset($info->np_link) ? $info->np_link : set_value('txt_link')); ?>">
+                  <?php echo form_error('txt_link', '<div class="text-danger small">*', '</div>'); ?>
+                  <div class="error-link d-none text-danger">*กรุณาระบุ http:// หรือ https://</div>
                </div>
                <div class="form-group pro-date">
                   <label>กำหนดวันที่</label>
@@ -51,11 +61,11 @@
                      <input type="text" name="txt_datepromotion" class="form-control float-right" id="txt_datepromotion" value="">
                   </div>
                </div>
-               <div class="form-group">
+               <div class="form-group type3link">
                   <label for="txt_shortdesc">รายละเอียดย่อ</label>
                   <textarea name="txt_shortdesc" id="txt_shortdesc" name="txt_shortdesc" class="form-control" rows="5"><?php echo (isset($info->np_shortdesc) ? $info->np_shortdesc : set_value('txt_shortdesc')); ?></textarea>
                </div>
-               <div class="form-group editor_description">
+               <div class="form-group editor_description type3link">
                   <label for="txt_description">รายละเอียด</label>
                   <textarea name="txt_description" id="txt_description" name="txt_description" class="form-control"><?php echo (isset($info->np_description) ? $info->np_description : set_value('txt_description')); ?></textarea>       
                </div>
@@ -120,46 +130,56 @@
          $('.type-content').removeClass('d-none');
          $('.btn-manage button').removeClass('d-none');
          $('.error-type').hide();
-         if($('input[name="txt_type"]').val() == 1){
-            $('.pro-date').hide();
-         }else{
+         if($('input:checked').val() == 2){
             $('.pro-date').show();
+         }else{
+            $('.pro-date').hide();
+         }
+         if($('input:checked').val() == 3){
+            $('.type3link').hide();
+            $('.link-url').removeClass('d-none');
+         }else{
+            $('.type3link').show();
+            $('.link-url').addClass('d-none');
          }
       }
       $('input[type="radio"]').on('change',function(){
          $('.type-content').removeClass('d-none');
          $('.btn-manage button').removeClass('d-none');
          $('.error-type').hide();
-         if($(this).val() == 1){
-            $('.pro-date').hide();
-         }else{
+         if($(this).val() == 2){
             $('.pro-date').show();
+         }else{
+            $('.pro-date').hide();
          }
-      })
-      $('#btn_submit').on('click',function(){
-         $('#frm_submit').submit();
+         if($(this).val() == 3){
+            $('.type3link').hide();
+            $('.link-url').removeClass('d-none');
+         }else{
+            $('.type3link').show();
+            $('.link-url').addClass('d-none');
+         }
       });
 
-      ClassicEditor
-		.create( document.querySelector( '#txt_shortdesc' ), {
-			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]         
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
+      $('#txt_link').change(function(){
+         /*let link1 = $(this).val().substr(0,7);
+         let link2 = $(this).val().substr(0,8);*/
+         let result = clink($(this).val());
+         if(!result){
+            $('.error-link').removeClass('d-none');
+         }else{
+            $('.error-link').addClass('d-none');
+         }
+      });
 
-      ClassicEditor
-		.create( document.querySelector( '#txt_description' ), {
-			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
-   });
+      $('#btn_submit').on('click',function(){         
+         let result = clink($('#txt_link').val());
+         if(!result){
+            $('.error-link').removeClass('d-none');
+         }else{
+            $('.error-link').addClass('d-none');
+            $('#frm_submit').submit();
+         }
+      });
+   });   
 </script>

@@ -51,17 +51,14 @@ a{
 }
 .home-banner{
 	.slick-slide img {
-	   width: 100%;
+		width: 100%;
 	}
 }
 .slick-2-items{
 	margin-top: 9rem;
 	.slick-list.draggable{
 		margin: auto;
-		width: 960px;
-		.slick-slide{
-			width: 480px;
-		}
+		max-width: 960px;
 	}
 }
 .green_gradient{
@@ -211,6 +208,11 @@ a:hover{
 		width: 100%;
 		padding: 0 15px;
 	}
+	.mt-5{
+		@include media-query(480px){
+			margin-top: 0 !important;
+		}
+	}
 }
 .online-buying{
 	background-image: url('../images/home/online-buying-bg.jpg');
@@ -247,6 +249,24 @@ a:hover{
 	}
 	.product-list{
 		margin-top: 9rem;
+		@include media-query(480px){
+			margin: 0 auto !important;
+		}
+		.col-md-6{
+			@include media-query(480px){
+				margin-bottom: 30px;
+			}
+		}
+	}
+	.mt-5{
+		@include media-query(480px){
+			margin-top: 0 !important;
+		}
+	}
+	.ptb-60{
+		@include media-query(480px){
+			padding: 60px 0 30px;
+		}
 	}
 }
 .product-page{
@@ -358,7 +378,7 @@ a:hover{
 	margin-top: 15px;
 	height: 90px;
 	position: relative;
-	a{
+	a,span{
 		line-height: 35px;
 		position: absolute;
 		top:50%;
@@ -368,11 +388,12 @@ a:hover{
 		padding: 15px;
 		margin-bottom: 0;
 		color: #fff;
+		cursor: pointer;
 	}
 }
 .news-title:hover{
 	background-image: url('../images/news/content-title-bg-y.png');
-	a{
+	a,span{
 		color: #000;
 	}	
 }
@@ -469,4 +490,13 @@ a:hover{
 	margin-bottom: 15px;
 	font-family: 'sukhumvit_setmedium';
 	font-size: 20px;
+}
+.pointer{
+	cursor: pointer;
+}
+.zoom-out{
+	transition: transform .2s;
+}
+.zoom-out:hover{
+	transform: scale(1.1);
 }

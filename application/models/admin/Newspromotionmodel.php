@@ -12,6 +12,7 @@
          $data_info=array(
             'np_type'=>strip_tags($data['txt_type']),
             'np_name'=>strip_tags($data['txt_name']),
+            'np_link'=>strip_tags($data['txt_link']),
             'np_shortdesc'=>$data['txt_shortdesc'],
             'np_description'=>$data['txt_description'],
             'np_status'=>strip_tags($data['ddl_status']),
@@ -49,6 +50,7 @@
          $data_info=array(
             'np_type'=>strip_tags($data['txt_type']),
             'np_name'=>strip_tags($data['txt_name']),
+            'np_link'=>strip_tags($data['txt_link']),
             'np_shortdesc'=>$data['txt_shortdesc'],
             'np_description'=>$data['txt_description'],
             'np_status'=>strip_tags($data['ddl_status']),

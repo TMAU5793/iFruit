@@ -39,7 +39,7 @@
                <tr>
                   <td align="center"><?php echo $i; ?></td>
                   <td><?php echo $item['np_name']; ?></td>
-                  <td align="center"><?php echo ($item['np_type']==2 ? 'โปรโมชั่น' : 'ข่าวสาร'); ?></td>
+                  <td align="center"><?php echo ($item['np_type']==2 ? 'โปรโมชั่น' : ($item['np_type']==3 ? 'ลิงค์' : 'ข่าวสาร')); ?></td>
                   <td align="center"><?php echo ($item['np_type']==2 ? $item['np_start'] : '-'); ?></td>
                   <td align="center"><?php echo ($item['np_type']==2 ? $item['np_end'] : '-'); ?></td>
                   <td align="center">

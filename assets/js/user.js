@@ -2,6 +2,28 @@ $(function(){
    $('.form-group').on('click',function(){
       $(this).find('.text-danger.small').hide();
    })
+
+   ClassicEditor
+		.create( document.querySelector( '#txt_shortdesc' ), {
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]         
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
+
+   ClassicEditor
+		.create( document.querySelector( '#txt_description' ), {
+			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]
+		} )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( err => {
+			console.error( err.stack );
+		} );
 });
 
 $(window).scroll(function() {
@@ -58,4 +80,14 @@ function gallery(input){
       }
       reader.readAsDataURL(input.files[0]);
     }
+}
+
+function clink(link){
+   let link1 = link.substr(0,7);
+   let link2 = link.substr(0,8);
+   if(link1 != 'http://' && link2 != 'https://'){
+      return false;
+   }else{
+      return true;
+   }
 }

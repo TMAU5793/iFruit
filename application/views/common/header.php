@@ -38,32 +38,32 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			 <ul class="navbar-nav mr-auto"></ul>
-			 <form class="form-inline my-2 my-lg-0">
-			   <ul class="navbar-nav mr-auto">
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='Home')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url(); ?>">หน้าแรก</a>
-				   </li>
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='Product')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url('Product'); ?>">สินค้า</a>
-				   </li>
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='Order')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url('Order'); ?>">ซื้อออนไลน์</a>
-				   </li>
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='Newspromotion')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url('Newspromotion'); ?>">ข่าวสาร และโปรโมชั่น</a>
-				   </li>
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='About')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url('About'); ?>">เกี่ยวกับเรา</a>
-				   </li>
-				   <li class="nav-item <?php echo ($this->router->fetch_class()=='Contact')? 'active':'';?>">
-				     <a class="nav-link" href="<?php echo base_url('Contact'); ?>">ติดต่อเรา</a>
-				   </li>
-				   <li class="nav-item cart">
-				     <a class="nav-link" href="#"><?php echo image_asset($cart_img); ?></a>
-				   </li>
-				 </ul>
-			 </form>
+				<ul class="navbar-nav mr-auto"></ul>
+				<form class="form-inline my-2 my-lg-0">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item <?php echo ($this->router->fetch_class()=='Home')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url(); ?>">หน้าแรก</a>
+						</li>
+						<li class="nav-item <?php echo ($this->router->fetch_class()=='Product')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url('Product'); ?>">สินค้า</a>
+						</li>
+						<!--li class="nav-item <?php echo ($this->router->fetch_class()=='Order')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url('Order'); ?>">ซื้อออนไลน์</a>
+						</!--li-->
+						<li class="nav-item <?php echo ($this->router->fetch_class()=='Newspromotion')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url('Newspromotion'); ?>">ข่าวสาร และโปรโมชั่น</a>
+						</li>
+						<li class="nav-item <?php echo ($this->router->fetch_class()=='About')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url('About'); ?>">เกี่ยวกับเรา</a>
+						</li>
+						<li class="nav-item <?php echo ($this->router->fetch_class()=='Contact')? 'active':'';?>">
+							<a class="nav-link" href="<?php echo base_url('Contact'); ?>">ติดต่อเรา</a>
+						</li>
+						<!--li class="nav-item cart">
+							<a class="nav-link" href="#"><?php echo image_asset($cart_img); ?></a>
+						</!--li-->
+					</ul>
+				</form>
 			</div>
 		</div>
 	</nav>

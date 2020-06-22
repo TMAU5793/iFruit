@@ -11,8 +11,9 @@ class Order extends CI_Controller {
 	public function index()
 	{
 		$data['product'] = $this->Utilitymodel->getProduct($limit=2);
+		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
       $this->load->view('common/header');
       $this->load->view('order',$data);
-      $this->load->view('common/footer');
+      $this->load->view('common/footer',$fdata);
 	}
 }

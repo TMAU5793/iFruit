@@ -12,17 +12,19 @@ class Newspromotion extends CI_Controller {
 	{
 		$hdata['metatitle'] = 'News & Promotion';
 		$data['info'] = $this->Utilitymodel->getNewsPromotion();
+		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
       $this->load->view('common/header',$hdata);
       $this->load->view('newspromotion',$data);
-      $this->load->view('common/footer');
+      $this->load->view('common/footer',$fdata);
 	}
 
 	public function detail()
 	{
 		$data['info'] = $this->Utilitymodel->getNewsPromotionById($this->uri->segment(3));
 		$hdata['metatitle'] = $data['info']->np_name;
+		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
 		$this->load->view('common/header',$hdata);
       $this->load->view('newspromotion-desc',$data);
-      $this->load->view('common/footer');
+      $this->load->view('common/footer',$fdata);
 	}
 }

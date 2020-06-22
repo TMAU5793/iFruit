@@ -1,3 +1,8 @@
+@mixin media-query( $length ) {
+	@media (max-width: $length) {
+		 @content;
+	}
+}
 .nav-bg{
 	background-color: #ffe26a;
 	-webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.75);
@@ -56,6 +61,24 @@
 .footer{
 	background-color: #129647;
 	padding: 5rem 0;
+	@include media-query(768px) {
+		padding: 3rem 0;
+	}
+	.container{
+		max-width: initial;
+	}
+	.footer-logo{
+		text-align: center;
+		img{
+			@include media-query(991px) {
+				max-width: 200px;
+				width: 100%;
+			}
+			@include media-query(480px) {
+				max-width: 150px;
+			}
+		}
+	}
 	.ft-menu{
 		ul{
 			list-style-type: none;
@@ -75,7 +98,7 @@
 		list-style-type: none;
 		li{
 			margin: 5px 0;
-			height: 26px;
+			word-break: break-word;
 		}
 	}
 	.menu-over:hover{
@@ -84,6 +107,31 @@
 	.social-footer{
 		a{
 			margin-right: 10px;
+		}
+	}
+	.col-md-3:first-child{
+		@include media-query(768px) {
+			flex: 0 0 100%;
+			max-width: 100%;
+			text-align: center;
+			margin-bottom: 15px;
+		}
+	}
+	.col-md-3:nth-child(2){
+		ul{
+			@include media-query(480px) {
+				margin-bottom: 0 !important;
+			}
+		}
+	}
+	.col-md-3{
+		@include media-query(768px) {
+			flex: 0 0 33.33%;
+			max-width: 33.33%;
+		}
+		@include media-query(480px) {
+			flex: 0 0 100%;
+			max-width: 100%;
 		}
 	}
 }

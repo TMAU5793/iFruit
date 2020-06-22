@@ -18,14 +18,14 @@
                <?php echo image_asset('home/fda.png'); ?>
             </div>
          </div>
-         <div class="row mt-5">
+         <!--div class="row mt-5">
             <div class="col-md-6 text-right">
                <a href="#" class="btn-buynow"><span>ซื้อเลย</span></a>
             </div>
             <div class="col-md-6 text-left">
                <a href="#" class="btn-more">อ่านต่อ</a>
             </div>
-         </div>
+         </!--div-->
       </div>
    </div>
 </section>
@@ -35,13 +35,13 @@
          <h2 class="ff_rukdeaw font-h2">ข่าวสารและโปรโมชั่น</h2>
          <div class="slick-2-items">
             <?php if($newspromotion){foreach($newspromotion as $npitem){ ?>
-               <div><img src="<?php echo base_url($npitem['np_thumbnail']); ?>"></div>
+               <div class="zoom-out pointer" onclick="location.href='<?php echo base_url('Newspromotion/detail/'.$npitem['np_id']) ?>'"><img src="<?php echo base_url($npitem['np_thumbnail']); ?>"></div>
             <?php } } ?>
          </div>
       </div>
    </div>
 </section>
-<section class="online-buying h-100vh pos-rel">
+<!--section class="online-buying h-100vh pos-rel">
    <div class="container ptb-60">
       <div class="mt-5">
          <h2 class="ff_rukdeaw font-h2 color-green text-center">สั่งซื้อออนไลน์</h2>
@@ -62,4 +62,4 @@
          </div>
       </div>
    </div>
-</section>
+</!--section-->

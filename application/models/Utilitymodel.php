@@ -52,11 +52,12 @@
          }
       }
 
-      public function getNewsPromotion()
+      public function getNewsPromotion($start=0,$limit=3)
       {
          $this->db->select('*');
          $this->db->from('tbl_newspromotion');
-         $this->db->where('np_status','1');         
+         $this->db->where('np_status','1');
+         $this->db->limit($limit,$start);
          $query=$this->db->get();
          if($query->num_rows()>0){
             return $query->result_array();
