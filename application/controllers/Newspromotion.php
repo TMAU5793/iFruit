@@ -12,6 +12,7 @@ class Newspromotion extends CI_Controller {
 	{
 		$hdata['metatitle'] = 'News & Promotion';
 		$data['info'] = $this->Utilitymodel->getNewsPromotion();
+		$data['count'] = $this->Utilitymodel->countNewsPromotion();
 		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
       $this->load->view('common/header',$hdata);
       $this->load->view('newspromotion',$data);

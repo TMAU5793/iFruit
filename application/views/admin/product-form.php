@@ -86,7 +86,7 @@
                </div>
             </div>
             <div class="form-group">
-               <label for="txt_description">การเผยแพร่</label>
+               <label for="ddl_status">การเผยแพร่</label>
                <select name="ddl_status" id="ddl_status" class="form-control">
                   <option value="1" <?php echo (isset($info) ? ($info->p_status == '1' ? 'selected=selected' : '') : '' ); ?>>เผยแพร่</option>
                   <option value="0" <?php echo (isset($info) ? ($info->p_status == '0' ? 'selected=selected' : '') : '' ); ?>>ไม่เผยแพร่</option>
@@ -97,7 +97,8 @@
    </section>
 </div>
 <aside class="control-sidebar control-sidebar-dark"></aside>
-<script src="<?php echo base_url('assets/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') ?>"></script>
+<script src="<?php echo base_url('ckeditor-4.14.1/ckeditor.js'); ?>"></script>
+<script src="<?php echo base_url('ckfinder-3.4.1/ckfinder.js'); ?>"></script>
 <script>
    $(function(){      
       $("#thumbnail").change(function () {
@@ -112,15 +113,12 @@
       });
       $('#btn_submit').on('click',function(){
          $('#frm_submit').submit();
-      });
-
-      ClassicEditor
-         .create( document.querySelector( '#txt_description' ) )
-         .then( editor => {
-            console.log( editor );
-         } )
-         .catch( error => {
-            console.error( error );
-         } );
+      });    
+      var base_url = '<?php echo base_url(); ?>';
+     
+      
+      //CKEDITOR.replace( 'txt_description' );
+      var editor = CKEDITOR.replace( 'txt_description' );
+      CKFinder.setupCKEditor( editor );
    });
 </script>

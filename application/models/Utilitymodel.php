@@ -52,7 +52,7 @@
          }
       }
 
-      public function getNewsPromotion($start=0,$limit=3)
+      public function getNewsPromotion($start=0,$limit=9)
       {
          $this->db->select('*');
          $this->db->from('tbl_newspromotion');
@@ -61,6 +61,19 @@
          $query=$this->db->get();
          if($query->num_rows()>0){
             return $query->result_array();
+         }else{
+            return false;
+         }
+      }
+
+      public function countNewsPromotion()
+      {
+         $this->db->select('np_id');
+         $this->db->from('tbl_newspromotion');
+         $this->db->where('np_status','1');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->num_rows();
          }else{
             return false;
          }

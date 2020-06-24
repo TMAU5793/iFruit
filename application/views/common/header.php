@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/fonts/thunder/font.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/slick/slick/slick.css'); ?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/slick/slick/slick-theme.css'); ?>">
+	<link rel="stylesheet" href="<?php echo base_url('ckfinder/skins/moono/ckfinder.css'); ?>">
 	<?php echo js_asset('jquery.min.js'); ?>
 	<?php echo css_asset('bootstrap.min.css'); ?>
 	<?php echo css_asset('ifruit.css'); ?>	

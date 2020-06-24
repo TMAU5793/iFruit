@@ -1,29 +1,7 @@
 $(function(){
    $('.form-group').on('click',function(){
       $(this).find('.text-danger.small').hide();
-   })
-
-   ClassicEditor
-		.create( document.querySelector( '#txt_shortdesc' ), {
-			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]         
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
-
-   ClassicEditor
-		.create( document.querySelector( '#txt_description' ), {
-			toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList' ]
-		} )
-		.then( editor => {
-			window.editor = editor;
-		} )
-		.catch( err => {
-			console.error( err.stack );
-		} );
+   })   
 });
 
 $(window).scroll(function() {

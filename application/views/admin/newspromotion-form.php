@@ -101,7 +101,8 @@
 <!-- /.control-sidebar -->
 <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/plugins/daterangepicker/daterangepicker.css'); ?>">
 <script src="<?php echo base_url('assets/adminlte/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
-<script src="<?php echo base_url('assets/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js') ?>"></script>
+<script src="<?php echo base_url('ckeditor-4.14.1/ckeditor.js'); ?>"></script>
+<script src="<?php echo base_url('ckfinder-3.4.1/ckfinder.js'); ?>"></script>
 <script>
    $(function(){      
       $("#thumbnail").change(function () {
@@ -181,5 +182,8 @@
             $('#frm_submit').submit();
          }
       });
+
+      var editor = CKEDITOR.replace( 'txt_description' );
+      CKFinder.setupCKEditor( editor );
    });   
 </script>
