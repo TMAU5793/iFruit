@@ -7,6 +7,7 @@
    <div class="container">
       <div>
          <?php echo $info->p_description; ?>
+         <div class="clearfix"></div>
       </div>
-   </div>
+   </div>   
 </section>

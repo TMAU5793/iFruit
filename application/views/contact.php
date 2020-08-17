@@ -124,8 +124,36 @@
             });
          },
          rules: {
-            field: {
-               required: true
+            txt_subject: {
+               required: true,
+               normalizer: function(value) {
+                  return $.trim(value);
+               }
+            },
+            txt_name: {
+               required: true,
+               normalizer: function(value) {
+                  return $.trim(value);
+               }
+            },
+            txt_phone: {
+               required: true,
+               normalizer: function(value) {
+                  return $.trim(value);
+               }
+            },
+            txt_email: {
+               required: true,
+               email: true,
+               normalizer: function(value) {
+                  return $.trim(value);
+               }
+            },
+            txt_message: {
+               required: true,
+               normalizer: function(value) {
+                  return $.trim(value);
+               }
             }
          }
       });

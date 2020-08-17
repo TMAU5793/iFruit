@@ -24,4 +24,17 @@ class V1 extends REST_Controller
          $this->error();
       }
    }
+
+   public function testAPI_get()
+   {
+      $start = 1;
+      $limit = 3;
+      $info = $this->Utilitymodel->getNewsPromotion($start,$limit);
+      if($info){
+         $this->response($info);
+         print_r($info);
+      }else{
+         $this->error();
+      }
+   }
 }

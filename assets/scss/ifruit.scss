@@ -280,8 +280,11 @@ a:hover{
 }
 .product-detail-page{
 	.container{
-		margin: 5rem auto;
+		padding: 5rem 0;
 		color: #000000;
+		@include media-query(480px){
+			padding: 5rem 1rem;
+		}
 	}
 }
 .bg-gray{

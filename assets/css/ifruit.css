@@ -498,8 +498,11 @@ a:hover {
     margin-top: 6rem; }
 
 .product-detail-page .container {
-  margin: 5rem auto;
+  padding: 5rem 0;
   color: #000000; }
+  @media (max-width: 480px) {
+    .product-detail-page .container {
+      padding: 5rem 1rem; } }
 
 .bg-gray {
   background-color: #7e807f; }

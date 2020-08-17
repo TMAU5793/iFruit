@@ -136,11 +136,11 @@ body{
 }
 .editor_description{
    .ck.ck-editor__main > .ck-editor__editable{
-      height: 400px !important;
+      min-height: 400px !important;
       overflow-y: auto;
    }
    .cke_contents{
-      height: 300px !important;
+      min-height: 400px !important;
    }
 }
 .status-true{
