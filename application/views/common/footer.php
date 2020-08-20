@@ -61,23 +61,12 @@
 	<script src="<?php echo base_url('assets/slick/slick/slick.min.js'); ?>"></script>
 	<script>
 		$(window).scroll(function() {
-			var cartimg = '<?php echo image_asset("cart.png"); ?>';
 			if ($(window).scrollTop() > 50) {
 				$('.navbar').addClass('nav-bg');
-				$('.cart a').html(cartimg);
+				$('.nav-white #cartList').css('background-position','center top');
 			}else{
-				<?php
-					if(!isset($cart_img)){
-						if($this->router->fetch_class()=='Home' || $this->router->fetch_class()=='Product' || $this->router->fetch_class()=='Order'){
-							$cart_img = "cart.png";
-						}else{
-							$cart_img = "cart-white.png";
-						}
-					}
-				?>
-				cartimg = '<?php echo image_asset($cart_img); ?>';
 				$('.navbar').removeClass('nav-bg');
-				$('.cart a').html(cartimg);
+				$('.nav-white #cartList').css('background-position','center bottom');
 			}
 		});
 
@@ -95,6 +84,33 @@
 					$('.cart a').html(cartimg);
 				}
 			});
+
+			var cartItem = '<?php echo count($this->cart->contents()); ?>';
+			var loadCart = "<?php echo base_url('Order/load_cart'); ?>";
+			if(cartItem > 0){
+				$('.myCart').load(loadCart);
+			}
+
+			$(document).on('click','.romove_cart',function(){
+				var row_id=$(this).attr("id"); 
+				$.ajax({
+						url : "<?php echo base_url('Order/delete_cart');?>",
+						method : "POST",
+						data : {row_id : row_id},
+						success :function(data){
+							location.reload();
+							//$('#myCart').html(data);
+						}
+				});
+			});
+
+			if ($(window).scrollTop() > 50) {
+				$('.navbar').addClass('nav-bg');
+				$('.nav-white #cartList').css('background-position','center top');
+			}else{
+				$('.navbar').removeClass('nav-bg');
+				$('.nav-white #cartList').css('background-position','center bottom');
+			}
 		});
 	</script>
 </body>

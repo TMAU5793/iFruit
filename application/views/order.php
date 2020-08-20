@@ -12,11 +12,27 @@
                      <h3><?php echo $pitem['p_name']; ?></h3>
                      <p><?php echo ($pitem['p_subtitle'] ? $pitem['p_subtitle'] : ''); ?></p>
                      <h3>ราคา <?php echo $pitem['p_price']; ?> บาท</h3>
-                     <a href="#" class="btn-buynow2">ซื้อเลย</a>
+                     <a href="javascript:void(0);" class="btn-buynow2 addTocart" data-pid="<?php echo $pitem['p_id'];?>">ซื้อเลย</a>
                   </div>
                </div>
             <?php } } ?>
          </div>
       </div>
-   </div>
+	</div>
 </section>
+<script>
+	$(function(){
+		$('.addTocart').click(function(){
+			var product_id    = $(this).data("pid");
+			$.ajax({
+				url : "<?php echo base_url('Order/addTocart');?>",
+				method : "POST",
+				data : {product_id: product_id},
+				success: function(data){
+					$('.myCart').html(data);
+					$('.badge-cart').load('<?php echo base_url('Order/cartQty'); ?>');
+				}
+			});			
+		});		
+	});	
+</script>

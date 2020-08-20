@@ -6,6 +6,7 @@ class Product extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Utilitymodel');
+		$this->load->library('cart');
 	}
 	public function index()
 	{
