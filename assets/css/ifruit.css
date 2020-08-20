@@ -845,5 +845,27 @@ a:hover {
     margin-top: -1px; }
     .cartOrder .cartEmpty .col-md-12 {
       padding: 15px; }
+  .cartOrder .cartBox {
+    background-color: rgba(18, 150, 71, 0.7);
+    padding: 15px;
+    color: #ffffff;
+    border-radius: 6px; }
+    .cartOrder .cartBox .tb-border {
+      border-top: 1px solid #ffffff;
+      border-bottom: 1px solid #ffffff;
+      padding: 5px 0; }
+
+.btn-shipment {
+  text-align: center;
+  margin-top: 15px; }
+  .btn-shipment button {
+    color: #ffffff !important;
+    background-color: #4f2006;
+    border-radius: 50px;
+    width: 120px; }
+  .btn-shipment button:hover {
+    -webkit-box-shadow: inset -4px -4px 4px 0px #1a0a01;
+    -moz-box-shadow: inset -4px -4px 4px 0px #1a0a01;
+    box-shadow: inset -4px -4px 4px 0px #1a0a01; }
 
 /*# sourceMappingURL=ifruit.css.map */

@@ -48,7 +48,38 @@
 				<?php } ?>
 			</div>
 			<div class="col-md-4">
-					
+				<div class="cartBox">
+					<h5 class="text-center">สินค้าทั้งหมด 4 ซอง</h5>
+					<div class="row m-0 tb-border">
+						<div class="col-md-6">
+							<span>ราคาสินค้ารวม</span>
+						</div>
+						<div class="col-md-6 text-right">
+							<span>500 ฿</span>
+						</div>
+					</div>
+					<div class="cartShipment mt-3 mb-5">
+						<div class="input-group">
+							<select name="ddl_shipment" id="ddl_shipment" class="form-control">
+								<option value="">เลือกการจัดส่ง</option>
+								<option value="">A</option>
+								<option value="">B</option>
+								<option value="">C</option>
+							</select>
+						</div>
+					</div>
+					<div class="row m-0 tb-border">
+						<div class="col-md-6">
+							<span>ราคาสุทธิ</span>
+						</div>
+						<div class="col-md-6 text-right">
+							<span>600 ฿</span>
+						</div>
+					</div>
+					<div class="btn-shipment">
+						<button type="submit" class="btn">สั่งซื้อ</button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
