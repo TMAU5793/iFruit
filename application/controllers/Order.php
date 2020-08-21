@@ -89,11 +89,11 @@ class Order extends CI_Controller {
 	}
 	  
 	function cartQty(){
-		$qtyTotal = 0;
-		foreach($this->cart->contents() as $item){
-			$qtyTotal += $item['qty'];
-		}
-		echo $qtyTotal;
+		// $qtyTotal = 0;
+		// foreach($this->cart->contents() as $item){
+		// 	$qtyTotal += $item['qty'];
+		// }
+		echo $this->cart->total_items();
 	}
 
 	function delItem(){

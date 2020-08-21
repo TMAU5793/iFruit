@@ -723,7 +723,7 @@ a:hover {
     .cart .myCart a {
       font-family: 'sukhumvit_settext';
       font-size: 14px !important;
-      color: #ffffff; }
+      color: #ffffff !important; }
     .cart .myCart .arrow::before {
       position: absolute;
       display: block;

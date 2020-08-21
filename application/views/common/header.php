@@ -59,14 +59,8 @@
 						<a class="nav-link" href="<?php echo base_url('Contact'); ?>">ติดต่อเรา</a>
 					</li>
 					<li class="nav-item cart">
-						<a class="nav-link" href="#" id="cartList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-						<?php
-							$totalItem = 0;
-							if($this->cart->total_items() > 0){
-								$totalItem = $this->cart->total_items();
-						?>
-							<span class="badge badge-danger badge-cart"><?php echo $totalItem; ?></span>
-						<?php } ?>
+						<a class="nav-link" href="#" id="cartList" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>						
+						<span class="badge badge-danger badge-cart"></span>						
 						<div class="dropdown" aria-labelledby="cartList">							
 							<div class="dropdown-menu myCart">
 								<div class="arrow"></div>
