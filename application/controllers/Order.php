@@ -128,9 +128,18 @@ class Order extends CI_Controller {
 		echo $this->cartItem();
 	}
 
+	function changeItem(){ 
+		$data = array(
+			'rowid' => $this->input->post('row_id'), 
+			'qty' => $this->input->post('val')
+		);
+		$this->cart->update($data);
+		echo $this->cartItem();
+	}
+
 	function cartItem()
 	{
-		$html = '<div class="row orderTitle">
+		/*$html = '<div class="row orderTitle">
 			<div class="col-md-3 text-center"><strong>สินค้า</strong></div>
 			<div class="col-md-3 text-right"><strong>ราคา/ซอง</strong></div>
 			<div class="col-md-3 text-center"><strong>จำนวน</strong></div>
@@ -156,7 +165,7 @@ class Order extends CI_Controller {
 							<div class="input-group-prepend delItem" data-rowid="'.$item['rowid'].'">
 								<span class="input-group-text">-</span>
 							</div>
-							<input type="text" class="form-control text-center numItem-'.$item['id'].'" name="txtNum'.$item['id'].'" value="'.number_format($item['qty']).'">
+							<input type="text" class="form-control text-center numItem-'.$item['id'].'" name="txtNum'.$item['id'].'" value="'.number_format($item['qty']).'" data-rowid="'.$item['rowid'].'">
 							<div class="input-group-append addItem" data-rowid="'.$item['rowid'].'">
 								<span class="input-group-text">+</span>
 							</div>
@@ -167,7 +176,21 @@ class Order extends CI_Controller {
 					</div>
 				</div>';
 			}
+		}else{
+			$html .= '<div class="row orderTitle cartEmpty">
+				<div class="col-md-12 text-center">ไม่มีสินค้าในตะกร้า <a href="'.base_url('Order').'">เพิ่มสินค้า</a></div>
+			</div>';
+		}*/
+		$data = array();
+		foreach($this->cart->contents() as $item){
+			array_push($data,$item);
 		}
-		return $html;
+		//print_r($this->cart->contents());
+		print_r($data);
+	}
+
+	function loadTotalPrice()
+	{
+		echo number_format($this->cart->total()).' ฿';
 	}
 }

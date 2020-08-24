@@ -31,14 +31,14 @@
 								<div class="input-group-prepend delItem" data-rowid="<?php echo $item['rowid'] ?>">
 									<span class="input-group-text">-</span>
 								</div>
-								<input type="text" class="form-control text-center numItem-<?php echo $item['id']; ?>" name="txtNum<?php echo $item['id']; ?>" value="<?php echo number_format($item['qty']); ?>">
+								<input type="text" class="form-control text-center numItem-<?php echo $item['id']; ?>" name="txtNum<?php echo $item['id']; ?>" value="<?php echo number_format($item['qty']); ?>" data-rowid="<?php echo $item['rowid'] ?>">
 								<div class="input-group-append addItem" data-rowid="<?php echo $item['rowid'] ?>">
 									<span class="input-group-text">+</span>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-3 text-right">
-							<span class="f-22"><?php echo number_format($item['subtotal']); ?> ฿</span>
+							<span class="f-22 subtotal-<?php echo $item['id']; ?>"><?php echo number_format($item['subtotal']); ?> ฿</span>
 						</div>
 					</div>
 				<?php } }else{ ?>
@@ -55,7 +55,7 @@
 							<span>ราคาสินค้ารวม</span>
 						</div>
 						<div class="col-md-6 text-right">
-							<span>500 ฿</span>
+							<span id="subtotalPrice"><?php echo number_format($this->cart->total()); ?> ฿</span>
 						</div>
 					</div>
 					<div class="cartShipment mt-3 mb-5">
@@ -86,7 +86,7 @@
 </section>
 <script>
 	$(function(){
-		$('.badge-cart').hide();
+		$('.badge-cart, .myCart').hide();
 
 		$(document).on('click','.delItem',function(){
 			var row_id=$(this).data("rowid"); 
@@ -96,6 +96,7 @@
 					data : {row_id : row_id},
 					success :function(data){
 						$('#cartItemList').html(data);
+						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
 					}
 			});
 		});
@@ -107,9 +108,34 @@
 					method : "POST",
 					data : {row_id : row_id},
 					success :function(data){
-						$('#cartItemList').html(data);
+						//$('#cartItemList').html(data);						
+						console.log(data);
+						var myArray = ["one", "two", "three", "four", "five"];
+						$.each(myArray, function (index, value) {
+							console.log(value);
+						});
+						var n = 0;
+						$.each(data, function (index, value) {
+							console.log(n++);
+						});
+						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
 					}
 			});
+		});
+
+		$(document).on('change','input[class*=numItem-]',function(){
+			var row_id = $(this).data("rowid");
+			var cvalue = $(this).val();
+			console.log(cvalue);
+			$.ajax({
+					url : "<?php echo base_url('Order/changeItem');?>",
+					method : "POST",
+					data : {row_id:row_id,val:cvalue},
+					success :function(data){
+						$('#cartItemList').html(data);
+						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+					}
+			});			
 		});
 	});
 </script>

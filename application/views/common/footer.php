@@ -94,20 +94,21 @@
 			}			
 
 			$(document).on('click','.romove_cart',function(){
-				var row_id=$(this).attr("id"); 
+				var row_id=$(this).attr("id");				
 				$.ajax({
-						url : "<?php echo base_url('Order/delete_cart');?>",
-						method : "POST",
-						data : {row_id : row_id},
-						success :function(data){
-							$('.myCart').load('<?php echo base_url('Order/load_cart'); ?>');
-							//$('.badge-cart').load('<?php echo base_url('Order/cartQty'); ?>');
-							cartItem = $('.badge-cart').load('<?php echo base_url('Order/cartQty'); ?>');
-							if(cartItem > 0){
-								
-								$('.badge-cart').html(cartItem);
+					url : "<?php echo base_url('Order/delete_cart');?>",
+					method : "POST",
+					data : {row_id : row_id},
+					success :function(data){
+						$('.myCart').load('<?php echo base_url('Order/load_cart'); ?>');
+						$('.badge-cart').load('<?php echo base_url('Order/cartQty'); ?>');
+						setTimeout(function() {
+                     cartItem = Number($('.badge-cart').html());
+							if(cartItem == 0){								
+								location.reload();
 							}
-						}
+                  }, 500);						
+					}
 				});
 			});
 
