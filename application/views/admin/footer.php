@@ -6,7 +6,8 @@
          $.widget.bridge('uibutton', $.ui.button)
       </script>
       <!-- Bootstrap 4 -->
-      <script src="<?php echo base_url('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+		
       <!-- ChartJS -->
       <script src="<?php echo base_url('assets/adminlte/plugins/chart.js/Chart.min.js'); ?>"></script>
       <!-- Sparkline -->
@@ -26,7 +27,7 @@
       <!-- overlayScrollbars -->
       <script src="<?php echo base_url('assets/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js'); ?>"></script>
       <!-- AdminLTE App -->
-      <script src="<?php echo base_url('assets/adminlte/dist/js/adminlte.js'); ?>"></script>
+		<script src="<?php echo base_url('assets/adminlte/dist/js/adminlte.js'); ?>"></script>
       <script src="<?php echo base_url('assets/js/user.js'); ?>"></script>
    </body>
 </html>

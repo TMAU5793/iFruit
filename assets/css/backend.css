@@ -59,7 +59,7 @@ body {
     color: black;
     border: 0 !important; }
   .login-page input:focus {
-    outline: 0 0 0 0  !important;
+    outline: 0 0 0 0 !important;
     box-shadow: 0 0 0 0 !important; }
   .login-page .login_btn {
     color: black;
@@ -171,5 +171,21 @@ body {
   background-position: center;
   background-size: cover;
   border-radius: 6px; }
+
+.error-validate {
+  border: 1px solid #ff0000 !important; }
+
+.error-validate::placeholder {
+  color: #ff0000 !important; }
+
+.pull-right {
+  float: right;
+  margin-top: 4px; }
+
+.menu-open li.active a {
+  color: #fff; }
+  .menu-open li.active a i {
+    background: #fff;
+    border-radius: 50px; }
 
 /*# sourceMappingURL=backend.css.map */

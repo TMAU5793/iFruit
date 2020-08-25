@@ -91,12 +91,15 @@
 		$(document).on('click','.delItem',function(){
 			var row_id=$(this).data("rowid"); 
 			$.ajax({
-					url : "<?php echo base_url('Order/delItem');?>",
+					url : "<?php echo base_url('api/Cart/delItem/format/json');?>",
 					method : "POST",
 					data : {row_id : row_id},
 					success :function(data){
-						$('#cartItemList').html(data);
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$.each(data, function (i, item) { 
+							$('.numItem-'+item.id).val(item.qty);
+							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
+						});
 					}
 			});
 		});
@@ -104,21 +107,15 @@
 		$(document).on('click','.addItem',function(){
 			var row_id=$(this).data("rowid"); 
 			$.ajax({
-					url : "<?php echo base_url('Order/addItem');?>",
+					url : "<?php echo base_url('api/Cart/addItem/format/json');?>",
 					method : "POST",
 					data : {row_id : row_id},
 					success :function(data){
-						//$('#cartItemList').html(data);						
-						console.log(data);
-						var myArray = ["one", "two", "three", "four", "five"];
-						$.each(myArray, function (index, value) {
-							console.log(value);
-						});
-						var n = 0;
-						$.each(data, function (index, value) {
-							console.log(n++);
-						});
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$.each(data, function (i, item) { 
+							$('.numItem-'+item.id).val(item.qty);
+							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
+						});
 					}
 			});
 		});
@@ -128,12 +125,15 @@
 			var cvalue = $(this).val();
 			console.log(cvalue);
 			$.ajax({
-					url : "<?php echo base_url('Order/changeItem');?>",
+					url : "<?php echo base_url('api/Cart/changeItem/format/json');?>",
 					method : "POST",
 					data : {row_id:row_id,val:cvalue},
 					success :function(data){
-						$('#cartItemList').html(data);
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$.each(data, function (i, item) { 
+							$('.numItem-'+item.id).val(item.qty);
+							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
+						});
 					}
 			});			
 		});
