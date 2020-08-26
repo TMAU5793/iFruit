@@ -49,31 +49,35 @@
 			</div>
 			<div class="col-md-4">
 				<div class="cartBox">
-					<h5 class="text-center">สินค้าทั้งหมด 4 ซอง</h5>
+					<h5 class="text-center">สินค้าทั้งหมด <span id="productQty"><?php echo $this->cart->total_items(); ?></span> ซอง</h5>
 					<div class="row m-0 tb-border">
 						<div class="col-md-6">
 							<span>ราคาสินค้ารวม</span>
 						</div>
 						<div class="col-md-6 text-right">
-							<span id="subtotalPrice"><?php echo number_format($this->cart->total()); ?> ฿</span>
+							<span id="subtotalPrice"><?php echo number_format($this->cart->total()); ?></span> ฿
 						</div>
 					</div>
 					<div class="cartShipment mt-3 mb-5">
 						<div class="input-group">
 							<select name="ddl_shipment" id="ddl_shipment" class="form-control">
-								<option value="">เลือกการจัดส่ง</option>
-								<option value="">A</option>
-								<option value="">B</option>
-								<option value="">C</option>
+								<option value="">-- เลือกการจัดส่ง --</option>
+								<?php 
+									if($shipping) {
+										foreach ($shipping as $cate){ 
+								?>
+									<option value="<?php echo $cate['cid']; ?>"><?php echo $cate['name']; ?></option>
+								<?php } } ?>
 							</select>
 						</div>
+						<div class="mt-2">ราคาในการจัดส่ง <span id="priceRate">(ยังไม่เลือกการจัดส่ง)</span></div>
 					</div>
 					<div class="row m-0 tb-border">
 						<div class="col-md-6">
 							<span>ราคาสุทธิ</span>
 						</div>
 						<div class="col-md-6 text-right">
-							<span>600 ฿</span>
+							<span id="netPrice">0 ฿</span>
 						</div>
 					</div>
 					<div class="btn-shipment">
@@ -87,7 +91,7 @@
 <script>
 	$(function(){
 		$('.badge-cart, .myCart').hide();
-
+		
 		$(document).on('click','.delItem',function(){
 			var row_id=$(this).data("rowid"); 
 			$.ajax({
@@ -96,6 +100,7 @@
 					data : {row_id : row_id},
 					success :function(data){
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$('#productQty').load('<?php echo base_url('Order/cartQty') ?>');
 						$.each(data, function (i, item) { 
 							$('.numItem-'+item.id).val(item.qty);
 							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
@@ -112,6 +117,7 @@
 					data : {row_id : row_id},
 					success :function(data){
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$('#productQty').load('<?php echo base_url('Order/cartQty') ?>');
 						$.each(data, function (i, item) { 
 							$('.numItem-'+item.id).val(item.qty);
 							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
@@ -130,12 +136,31 @@
 					data : {row_id:row_id,val:cvalue},
 					success :function(data){
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
+						$('#productQty').load('<?php echo base_url('Order/cartQty') ?>');
 						$.each(data, function (i, item) { 
 							$('.numItem-'+item.id).val(item.qty);
 							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
 						});
 					}
 			});			
+		});
+
+		$('#ddl_shipment').on('change',function(){
+			var sid = $(this).val();
+			var item = Number($('#productQty').text());
+			if(sid !=""){
+				$.ajax({
+					method: "GET",
+					url: "<?php echo base_url('api/Cart/shippingRate');?>",
+					data: {id:sid,item:item},
+					dataType: "json",
+					success: function (response) {
+						console.log(response.shipping_rate);
+					}
+				});
+			}else{
+				$('#priceRate').html('(ยังไม่เลือกการจัดส่ง)');
+			}
 		});
 	});
 </script>

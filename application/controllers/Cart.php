@@ -10,8 +10,10 @@ class Cart extends CI_Controller {
 	public function index()
 	{
 		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
+		$data['shipping'] = $this->Utilitymodel->getShipping();
+		$data['shipping_rate'] = $this->Utilitymodel->getShippingRate();
       $this->load->view('common/header');
-      $this->load->view('cart');
+      $this->load->view('cart',$data);
       $this->load->view('common/footer',$fdata);
 	}
 }

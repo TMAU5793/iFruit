@@ -133,6 +133,49 @@
          }else{
             return false;
          }
-      }
+		}
+
+		public function getShipping()
+		{
+			$this->db->select('*,a.id as cid');
+			$this->db->from('tbl_shipping a');
+			$this->db->join('tbl_shipping_rate b','b.shipping_id = a.id');
+			$this->db->where('a.status','1');
+			$this->db->group_by('b.shipping_id');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->result_array();
+         }else{
+            return false;
+         }
+		}
+		public function getShippingRate()
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_shipping_rate');
+         $this->db->where('status','1');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->result_array();
+         }else{
+            return false;
+         }
+		}
+
+		public function getShippingPrice($id,$item)
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_shipping_rate');
+			$this->db->where('shipping_id',$id);
+			$this->db->where('first_qty <=',$item);
+			$this->db->where('last_qty >=',$item);
+         $this->db->where('status','1');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->row();
+         }else{
+            return false;
+         }
+		}
    }
 ?>

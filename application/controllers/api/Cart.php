@@ -54,4 +54,20 @@ class Cart extends REST_Controller
 		$this->cart->update($data);
 		$this->response($this->cart->contents());
 	}
+
+	function shippingRate_get()
+	{
+		$id = $this->input->get('id');
+		$item = $this->input->get('item');
+		if($_GET && is_numeric($id) && is_numeric($item) && $id > 0 && $item > 0){
+			$result = $this->Utilitymodel->getShippingPrice($id,$item);
+			if($result){
+				$this->response($result);
+			}else{
+				$this->error();
+			}
+		}else{
+			redirect('Order');
+		}
+	}
 }

@@ -89,15 +89,11 @@ class Order extends CI_Controller {
 	}
 	  
 	function cartQty(){
-		// $qtyTotal = 0;
-		// foreach($this->cart->contents() as $item){
-		// 	$qtyTotal += $item['qty'];
-		// }
 		echo $this->cart->total_items();
 	}
 
 	function loadTotalPrice()
 	{
-		echo number_format($this->cart->total()).' ฿';
+		echo number_format($this->cart->total());
 	}
 }
