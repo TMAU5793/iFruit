@@ -70,4 +70,49 @@ class Cart extends REST_Controller
 			redirect('Order');
 		}
 	}
+
+	function amphures_post()
+	{
+		$id = $this->input->post('id');
+		if($_POST && is_numeric($id) && $id > 0){
+			$result = $this->Utilitymodel->getAmphuresByProvince($id);
+			if($result){
+				$this->response($result);
+			}else{
+				$this->error();
+			}
+		}else{
+			redirect('Cart/shipping');
+		}
+	}
+
+	function districts_post()
+	{
+		$id = $this->input->post('id');
+		if($_POST && is_numeric($id) && $id > 0){
+			$result = $this->Utilitymodel->getDistrictsByAmphure($id);
+			if($result){
+				$this->response($result);
+			}else{
+				$this->error();
+			}
+		}else{
+			redirect('Cart/shipping');
+		}
+	}
+
+	function postcode_post()
+	{
+		$id = $this->input->post('id');
+		if($_POST && is_numeric($id) && $id > 0){
+			$result = $this->Utilitymodel->getDistrictsById($id);
+			if($result){
+				$this->response($result);
+			}else{
+				$this->error();
+			}
+		}else{
+			redirect('Cart/shipping');
+		}
+	}
 }

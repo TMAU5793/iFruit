@@ -162,6 +162,20 @@
          }
 		}
 
+		public function getShippingRateById($id)
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_shipping_rate a');
+			$this->db->join('tbl_shipping b','b.id = a.shipping_id');
+			$this->db->where('a.id',$id);
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->row();
+         }else{
+            return false;
+         }
+		}
+
 		public function getShippingPrice($id,$item)
 		{
 			$this->db->select('*');
@@ -170,6 +184,57 @@
 			$this->db->where('first_qty <=',$item);
 			$this->db->where('last_qty >=',$item);
          $this->db->where('status','1');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->row();
+         }else{
+            return false;
+         }
+		}
+
+		public function getProvinces()
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_provinces');
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->result_array();
+         }else{
+            return false;
+         }
+		}
+
+		public function getAmphuresByProvince($province)
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_amphures');
+			$this->db->where('province_id',$province);
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->result_array();
+         }else{
+            return false;
+         }
+		}
+
+		public function getDistrictsByAmphure($amphur)
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_districts');
+			$this->db->where('amphure_id',$amphur);
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->result_array();
+         }else{
+            return false;
+         }
+		}
+
+		public function getDistrictsById($id)
+		{
+			$this->db->select('zip_code');
+			$this->db->from('tbl_districts');
+			$this->db->where('id',$id);
          $query=$this->db->get();
          if($query->num_rows()>0){
             return $query->row();

@@ -868,4 +868,26 @@ a:hover {
     -moz-box-shadow: inset -4px -4px 4px 0px #1a0a01;
     box-shadow: inset -4px -4px 4px 0px #1a0a01; }
 
+.shipping-page .form-control {
+  background-color: rgba(245, 224, 37, 0.5);
+  border: 1px solid #129647; }
+
+.orderItem .romove_cart {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  background-image: url("../images/i-close.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  background-color: #ff0000;
+  padding: 10px;
+  border-radius: 50px; }
+.orderItem .romove_cart:hover {
+  background-position: center top; }
+
 /*# sourceMappingURL=ifruit.css.map */
