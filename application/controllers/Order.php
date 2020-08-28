@@ -96,15 +96,4 @@ class Order extends CI_Controller {
 	{
 		echo number_format($this->cart->total());
 	}
-
-	function update_cart(){
-		echo $this->input->post('net_price');
-		echo $this->input->post('shipping_rate');
-		// $data = array(
-		// 	'net_price' => $this->input->post('net_price'), 
-		// 	'shipping_rate' => $this->input->post('shipping_rate'),
-		// );
-		// $this->cart->update($data);
-		// print_r($this->cart->contents());
-	}
 }

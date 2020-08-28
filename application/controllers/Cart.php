@@ -6,6 +6,7 @@ class Cart extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Utilitymodel');
+		$this->load->model('Ordermodel');
 		$this->load->library('form_validation');
 	}
 	public function index()
@@ -32,23 +33,37 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	function payment()
+	function checkout()
 	{
-		if($this->shippingValidate()){
-			print_r($this->input->post());
-		}else{
-			$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
-			$data['shipping'] = $this->Utilitymodel->getShipping();
-			$data['provinces']= $this->Utilitymodel->getProvinces();
-			$carts = $this->cart->contents();
-			if($carts){
-				$data['carts'] = $carts;
-				$data['postinfo'] = $this->input->post();
-				$this->load->view('common/header');
-				$this->load->view('shipping',$data);
-				$this->load->view('common/footer',$fdata);
+		if($_POST){
+			if($this->shippingValidate()){				
+				$carts = $this->cart->contents();
+				$shipping = $this->Utilitymodel->getShippingRateById($this->input->post('hd_shipment'));
+				$order = $this->Ordermodel->AddOrder($this->input->post(),$carts,$shipping);
+				if($order){
+					$this->cart->destroy();
+					$this->Confirmation($order);
+				}
+			}else{
+				$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
+				$data['shipping'] = $this->Utilitymodel->getShipping();
+				$data['provinces']= $this->Utilitymodel->getProvinces();
+				$carts = $this->cart->contents();
+				if($carts){
+					$data['carts'] = $carts;
+					$data['postinfo'] = $this->input->post();
+					$this->load->view('common/header');
+					$this->load->view('shipping',$data);
+					$this->load->view('common/footer',$fdata);
+				}
 			}
+		}else{
+			redirect('Order');
 		}
+	}
+
+	public function Confirmation($order){
+		print_r($order);
 	}
 
 	public function shippingValidate(){

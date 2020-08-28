@@ -1,7 +1,7 @@
 <section class="cartOrder shipping-page online-buying">
 	<div class="container ptb-60">
 		<h2 class="ff_rukdeaw font-h2 color-green text-center mt-5">สั่งซื้อออนไลน์</h2>
-		<form id="frm_payment" action="<?php echo base_url('Cart/payment'); ?>" method="POST" enctype="multipart/form-data">
+		<form id="frm_payment" action="<?php echo base_url('Cart/checkout'); ?>" method="POST" enctype="multipart/form-data">
 			<input type="hidden" name="hd_shipment" value="<?php echo $postinfo['ddl_shipment']; ?>">
 			<div class="row">
 				<div class="col-md-8" id="cartItemList">
@@ -77,7 +77,7 @@
 							</div>
 							<div class="col-md-6 text-right">
 								<span id="subtotalPrice"><?php echo number_format($this->cart->total()); ?></span> ฿
-								<input type="hidden" name="hd_subtotal" id="hd_subtotal" value="">
+								<input type="hidden" name="hd_subtotal" id="hd_subtotal" value="<?php echo number_format($this->cart->total()); ?>">
 							</div>
 						</div>
 						<div class="row m-0 mb-3">
@@ -86,7 +86,7 @@
 							</div>
 							<div class="col-md-6 text-right">
 								<span id="shippingrate"><?php echo $shipping->shipping_rate; ?></span> ฿
-								<input type="hidden" name="hd_subtotal" id="hd_subtotal" value="<?php echo $shipping->shipping_rate; ?>">
+								<input type="hidden" name="hd_shipping_rate" id="hd_shipping_rate" value="<?php echo $shipping->shipping_rate; ?>">
 							</div>
 						</div>
 						<div class="row m-0 tb-border">
