@@ -30,6 +30,8 @@ class Cart extends CI_Controller {
 			$this->load->view('common/header');
 			$this->load->view('shipping',$data);
 			$this->load->view('common/footer',$fdata);
+		}else{
+			redirect('Order');
 		}
 	}
 
