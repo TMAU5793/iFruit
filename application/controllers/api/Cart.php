@@ -19,7 +19,11 @@ class Cart extends REST_Controller
 		$qty = 0;
 		foreach($this->cart->contents() as $item){
 			if($item['rowid']==$rowid){
-				$qty = $item['qty']-1;
+				if($item['qty'] > 1){
+					$qty = $item['qty']-1;
+				}else{
+					$qty = 1;
+				}
 			}
 		}
 		$data = array(
@@ -46,13 +50,31 @@ class Cart extends REST_Controller
 		$this->response($this->cart->contents());
 	}
 
-	function changeItem_post(){ 
-		$data = array(
-			'rowid' => $this->input->post('row_id'), 
-			'qty' => $this->input->post('val')
-		);
+	function changeItem_post(){
+		$qty =  $this->input->post('val');
+		if($qty > 0){
+			$data = array(
+				'rowid' => $this->input->post('row_id'), 
+				'qty' => $qty
+			);
+		}else{
+			$data = array(
+				'rowid' => $this->input->post('row_id'), 
+				'qty' => 1
+			);
+		}
 		$this->cart->update($data);
 		$this->response($this->cart->contents());
+	}
+
+	function removeItem_post(){ 
+		$data = array(
+			'rowid' => $this->input->post('row_id'), 
+			'qty' => 0,
+		);
+		if($this->cart->update($data)){
+			$this->response($this->cart->contents());
+		}
 	}
 
 	function shippingRate_get()

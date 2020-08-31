@@ -785,23 +785,17 @@ a:hover {
 }
 
 .orderItem {
-    .romove_cart {
+    .iRemove {
         position: absolute;
-        top: 50%;
+        top: 0;
         left: 15px;
-        transform: translateY(-50%);
-        background-image: url('../images/i-close.png');
-        background-position: center center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        width: 25px;
-        height: 25px;
-        cursor: pointer;
-        background-color: #ff0000;
-        padding: 10px;
-        border-radius: 50px;
-    }
-    .romove_cart:hover {
-        background-position: center top;
+        i {
+            cursor: pointer;
+            font-size: 26px;
+            color: #9e3810;
+        }
+        i:hover {
+            color: #ff0000;
+        }
     }
 }

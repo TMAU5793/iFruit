@@ -21,7 +21,9 @@
 				?>
 					<div class="row orderItem <?php echo $itemBorder; ?>">
 						<div class="col-md-3 text-center">
-							<i class="romove_cart"></i>
+							<div class="iRemove" data-rowid="<?php echo $item['rowid'] ?>">
+								<i class="fas fa-times-circle"></i>
+							</div>
 							<img src="<?php echo base_url($item['image']); ?>" alt="">
 						</div>
 						<div class="col-md-3 text-right">
@@ -97,10 +99,6 @@
 	$(function(){
 		$('.badge-cart, .myCart').hide();
 		$('#btn_order').on('click',function(){
-		// 	$('#hd_productqty').val($('#productQty').text());
-		// 	$('#hd_subtotal').val($('#subtotalPrice').text());
-			// $('#hd_shippingrate').val($('#priceRate').text().replace(" ฿", ""));
-			// $('#hd_netprice').val($('#netPrice').text());
 			if($('#ddl_shipment').val()!=""){
 				$('#frm_order').submit();
 			}else{
@@ -117,7 +115,7 @@
 						$('#subtotalPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
 						$('#netPrice').load('<?php echo base_url('Order/loadTotalPrice') ?>');
 						$('#productQty').load('<?php echo base_url('Order/cartQty') ?>');
-						$.each(data, function (i, item) { 
+						$.each(data, function (i, item) {
 							$('.numItem-'+item.id).val(item.qty);
 							$('.subtotal-'+item.id).html(item.subtotal.toLocaleString()+' ฿');
 						});
@@ -126,7 +124,7 @@
 		});
 
 		$(document).on('click','.addItem',function(){
-			var row_id=$(this).data("rowid"); 
+			var row_id=$(this).data("rowid");
 			$.ajax({
 					url : "<?php echo base_url('api/Cart/addItem/format/json');?>",
 					method : "POST",
@@ -184,6 +182,19 @@
 			}else{
 				$('#priceRate').html('(ยังไม่เลือกการจัดส่ง)');
 			}
+		});
+
+		$('.iRemove').on('click',function(){
+			var row_id=$(this).data("rowid");
+			console.log(row_id);
+			$.ajax({
+				url : "<?php echo base_url('api/Cart/removeItem');?>",
+				method : "POST",
+				data : {row_id : row_id},
+				success :function(data){
+					location.reload();
+				}
+			});
 		});
 	});
 </script>

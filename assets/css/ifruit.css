@@ -872,22 +872,15 @@ a:hover {
   background-color: rgba(245, 224, 37, 0.5);
   border: 1px solid #129647; }
 
-.orderItem .romove_cart {
+.orderItem .iRemove {
   position: absolute;
-  top: 50%;
-  left: 15px;
-  transform: translateY(-50%);
-  background-image: url("../images/i-close.png");
-  background-position: center center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
-  cursor: pointer;
-  background-color: #ff0000;
-  padding: 10px;
-  border-radius: 50px; }
-.orderItem .romove_cart:hover {
-  background-position: center top; }
+  top: 0;
+  left: 15px; }
+  .orderItem .iRemove i {
+    cursor: pointer;
+    font-size: 26px;
+    color: #9e3810; }
+  .orderItem .iRemove i:hover {
+    color: #ff0000; }
 
 /*# sourceMappingURL=ifruit.css.map */

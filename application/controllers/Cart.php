@@ -44,7 +44,7 @@ class Cart extends CI_Controller {
 				$order = $this->Ordermodel->AddOrder($this->input->post(),$carts,$shipping);
 				if($order){
 					$this->cart->destroy();
-					$this->Confirmation($order);
+					$this->confirmation($order);
 				}
 			}else{
 				$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
@@ -64,8 +64,11 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function Confirmation($order){
-		print_r($order);
+	public function confirmation($order=null){
+		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
+		$this->load->view('common/header');
+		$this->load->view('payment');
+		$this->load->view('common/footer',$fdata);
 	}
 
 	public function shippingValidate(){
