@@ -192,6 +192,23 @@
          }
 		}
 
+		public function getOrderByInvoice($invoice,$fied)
+		{
+			if($fied!=""){
+				$this->db->select($fied);
+			}else{
+				$this->db->select('*');
+			}
+			$this->db->from('tbl_order');
+			$this->db->where('invoice_no',$invoice);
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->row();
+         }else{
+            return false;
+         }
+		}
+
 		public function getProvinces()
 		{
 			$this->db->select('*');

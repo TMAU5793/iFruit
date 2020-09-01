@@ -44,7 +44,7 @@ class Cart extends CI_Controller {
 				$order = $this->Ordermodel->AddOrder($this->input->post(),$carts,$shipping);
 				if($order){
 					$this->cart->destroy();
-					$this->confirmation($order);
+					$this->confirmation($order->invoice_no);
 				}
 			}else{
 				$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
@@ -64,11 +64,39 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function confirmation($order=null){
-		$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
-		$this->load->view('common/header');
-		$this->load->view('payment');
-		$this->load->view('common/footer',$fdata);
+	public function confirmation($invoice_no='INV20090100004'){
+		$fied = ['invoice_no','nettotal'];
+		if($invoice_no!=null){
+			$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
+			$data['order'] = $this->Utilitymodel->getOrderByInvoice($invoice_no,$fied);
+			$this->load->view('common/header');
+			$this->load->view('payment',$data);
+			$this->load->view('common/footer',$fdata);
+		}else{
+			redirect('Order');
+		}
+	}
+
+	public function payment()
+	{
+		require_once dirname(__FILE__).'/../third_party/omise-php/lib/Omise.php';
+		define('OMISE_API_VERSION', '2019-05-29');
+		// define('OMISE_PUBLIC_KEY', 'PUBLIC_KEY');
+		// define('OMISE_SECRET_KEY', 'SECRET_KEY');
+		define('OMISE_PUBLIC_KEY', 'pkey_test_5kwio2ljfyi61k6jdbx');
+		define('OMISE_SECRET_KEY', 'skey_test_5kwio2ljp3puopxlaef');
+
+		$charge = OmiseCharge::create(array(
+			'amount' => 10025,
+			'currency' => 'thb',
+			'card' => $_POST["omiseToken"]
+		));
+
+		echo($charge['status']);
+
+		print('<pre>');
+		print_r($charge);
+		print('</pre>');
 	}
 
 	public function shippingValidate(){
