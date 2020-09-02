@@ -192,9 +192,9 @@
          }
 		}
 
-		public function getOrderByInvoice($invoice,$fied)
+		public function getOrderByInvoice($invoice,$fied=null)
 		{
-			if($fied!=""){
+			if($fied!=null){
 				$this->db->select($fied);
 			}else{
 				$this->db->select('*');

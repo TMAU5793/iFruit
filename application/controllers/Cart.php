@@ -44,7 +44,7 @@ class Cart extends CI_Controller {
 				$order = $this->Ordermodel->AddOrder($this->input->post(),$carts,$shipping);
 				if($order){
 					$this->cart->destroy();
-					$this->confirmation($order->invoice_no);
+					$this->payment($order->invoice_no);
 				}
 			}else{
 				$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
@@ -64,7 +64,7 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function confirmation($invoice_no='INV20090100004'){
+	public function payment($invoice_no='INV20090100004'){
 		$fied = ['invoice_no','nettotal'];
 		if($invoice_no!=null){
 			$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
@@ -77,26 +77,39 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function payment()
+	public function confirmation()
 	{
 		require_once dirname(__FILE__).'/../third_party/omise-php/lib/Omise.php';
-		define('OMISE_API_VERSION', '2019-05-29');
-		// define('OMISE_PUBLIC_KEY', 'PUBLIC_KEY');
-		// define('OMISE_SECRET_KEY', 'SECRET_KEY');
+		define('OMISE_API_VERSION', '2019-05-29'); // เข้าระบบ omise และคลิกที่อีเมล คลิก api version เลือกระหว่าง ทดสอบ กับ ใช้งานจริง
 		define('OMISE_PUBLIC_KEY', 'pkey_test_5kwio2ljfyi61k6jdbx');
 		define('OMISE_SECRET_KEY', 'skey_test_5kwio2ljp3puopxlaef');
 
+		$post = $this->input->post();
+		$ref_id = $this->Utilitymodel->getOrderByInvoice($post['hd_invoice'],'invoice_no');
+		$omiseToken = $post['omiseToken']; // omiseToken จะถูกส่งมาอัตโนมัติผ่าน omise form		
+		$return_uri = base_url("Cart/complete/".$ref_id->invoice_no); // ในขั้นตอนนี้ให้สร้าง ref_id สำหรับอ้างอิงไว้ใช้ในขั้นตอนต่อไป อาจจะใช้เป็น order id ก็ได้ ประมาณว่า order นี้กำลังจะชำระเงิน 
 		$charge = OmiseCharge::create(array(
-			'amount' => 10025,
-			'currency' => 'thb',
-			'card' => $_POST["omiseToken"]
-		));
+			'amount' => $amount,
+			'currency' => 'THB',
+			'card' => $omiseToken,
+			'return_uri' => $return_uri, // return_uri คือ uri สุดท้ายที่จะกลับมาที่หน้าเว็บไซต์ของเรา
+      ));
+        
+		$charge_id = $charge['id'];
+      $authorize_uri = $charge['authorize_uri'];        
+      // จังหวะนี้สำคัญ ก่อนที่จะ redirect ไปจากหน้านี้ ให้บันทึก ref_id และ charge_id ไว้ในฐานข้อมูลของเรา 
+      // เพื่อใช้อ้างอิงว่า transaction นี้ สำเร็จ หรือ ไม่สำเร็จ 
+		redirect($authorize_uri,'refresh'); // เราจะรีไปยังหน้าการยืนยันตัวตนผ่านระบบ OTP ของธนาคารนั้น ๆ 
+	}
 
-		echo($charge['status']);
-
-		print('<pre>');
-		print_r($charge);
-		print('</pre>');
+	public function complete(){
+		$ref_id = $this->input->get("ref_id"); // ใช้ ref_id คิวรี่หา charge_id แล้วใช้หาค่า status ว่า transaction นี้สำเร็จหรือไม่สำเร็จ		
+		$charge = OmiseCharge::retrieve($charge_id);
+		if($charge['status'] === 'successful') {
+			// เงินเข้าบัญชีเรียบร้อยแล้ว
+		}else{
+			// อาจจะ failed หรือ pending อยู่
+		}
 	}
 
 	public function shippingValidate(){
