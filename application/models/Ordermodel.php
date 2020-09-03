@@ -20,42 +20,59 @@
 				"update_by"=>$data['txt_name'],
 				"update_date"=> date_format($date, 'Y-m-d H:i:s')			
 			);
-			$this->db->insert("tbl_order",$order_info);
-			$order_id = $this->db->insert_id();
+			if($this->db->insert("tbl_order",$order_info)){
+				$order_id = $this->db->insert_id();
+				foreach($carts as $item) {
+					$orderdetail_info=array(
+					"order_id"=>$order_id,
+					"product_id"=>$item['id'],
+					"product_name"=>$item['name'],
+					"qty"=>$item['qty'],
+					"price"=>$item['price']
+					);
+					$this->db->insert("tbl_order_detail",$orderdetail_info);
+				}
 
-			foreach($carts as $item) {
-				$orderdetail_info=array(
-				  "order_id"=>$order_id,
-				  "product_id"=>$item['id'],
-				  "product_name"=>$item['name'],
-				  "qty"=>$item['qty'],
-				  "price"=>$item['price']
+				$shipping_info=array(
+					"order_id"=>$order_id,
+					"cus_name "=>strip_tags($data['txt_name']),
+					"cus_tel"=>strip_tags($data['txt_phone']),
+					"cus_email"=>strip_tags($data['txt_email']),
+					"address"=>strip_tags($data['txt_address']),
+					"province"=>strip_tags($data['ddl_province']),
+					"amphur"=>strip_tags($data['ddl_amphur']),
+					"district"=>strip_tags($data['ddl_district']),
+					"zipcode"=>strip_tags($data['txt_postcode'])
 				);
-				$this->db->insert("tbl_order_detail",$orderdetail_info);
+				$this->db->insert("tbl_shipping_address",$shipping_info);
+
+				$agent_info=array(
+					"order_id"=>$order_id,
+					"ip_address "=>$this->input->ip_address(),
+					"user_agent"=>$this->agent->agent_string(),
+					"accept_lang"=>$this->agent->accept_lang()
+				);
+				$this->db->insert("tbl_order_chanel",$agent_info);
+				$orders = $this->GetOrderById($order_id);
+				return $orders;
+			}    		
+		}
+
+		public function updateOrderPayment($data)
+		{
+			$date = new DateTime();
+			$order_info=array(
+				"order_status"=>'2',
+				"payment_status"=>'2',
+				"charge_id"=>$data['charge_id'],
+				"update_date"=> date_format($date, 'Y-m-d H:i:s')			
+			);
+			$this->db->where("invoice_no",$data['invoice']);
+			if($this->db->update("tbl_order",$order_info)){
+				return true;
+			}else{
+				return false;
 			}
-
-			$shipping_info=array(
-				"order_id"=>$order_id,
-				"cus_name "=>strip_tags($data['txt_name']),
-				"cus_tel"=>strip_tags($data['txt_phone']),
-				"cus_email"=>strip_tags($data['txt_email']),
-				"address"=>strip_tags($data['txt_address']),
-				"province"=>strip_tags($data['ddl_province']),
-				"amphur"=>strip_tags($data['ddl_amphur']),
-				"district"=>strip_tags($data['ddl_district']),
-				"zipcode"=>strip_tags($data['txt_postcode'])
-			);
-			$this->db->insert("tbl_shipping_address",$shipping_info);
-
-			$agent_info=array(
-				"order_id"=>$order_id,
-				"ip_address "=>$this->input->ip_address(),
-				"user_agent"=>$this->agent->agent_string(),
-				"accept_lang"=>$this->agent->accept_lang()
-			);
-			$this->db->insert("tbl_order_chanel",$agent_info);
-			$orders = $this->GetOrderById($order_id);
-    		return $orders;
 		}
 
 		public function GetOrderById($id)
@@ -69,6 +86,19 @@
 			}else{
 				return false;
 			}
+		}
+
+		public function getOrderByInvoice($invoice)
+		{
+			$this->db->select('*');
+			$this->db->from('tbl_order');
+			$this->db->where('invoice_no',$invoice);
+         $query=$this->db->get();
+         if($query->num_rows()>0){
+            return $query->row();
+         }else{
+            return false;
+         }
 		}
 
 		public function GenerateCode() {

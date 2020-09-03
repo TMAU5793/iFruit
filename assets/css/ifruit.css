@@ -883,4 +883,17 @@ a:hover {
   .orderItem .iRemove i:hover {
     color: #ff0000; }
 
+.payment {
+  background-image: url("../images/home/online-buying-bg.jpg");
+  background-repeat: repeat-y;
+  background-position: center center;
+  background-size: 100%;
+  height: 100vh; }
+  .payment button {
+    border: none;
+    margin-bottom: 15px;
+    padding: 5px 15px;
+    border-radius: 50px;
+    outline: none; }
+
 /*# sourceMappingURL=ifruit.css.map */
