@@ -814,3 +814,38 @@ a:hover {
         outline: none;
     }
 }
+
+.omise-method {
+    max-width: 360px;
+    padding: 15px;
+    border-radius: 10px;
+    margin: auto;
+    border: 1px solid #0f733a;
+    .form-check {
+        padding: 0;
+        text-align: center;
+        color: #000000;
+        label {
+            background-color: #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            padding: 6px;
+        }
+        input[type=radio] {
+            visibility: hidden;
+        }
+    }
+    .form-check:not(:last-child) {
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #0f733a;
+    }
+    .form-check:hover {
+        label {
+            -webkit-box-shadow: inset -4px -4px 4px 0px #4f2006;
+            -moz-box-shadow: inset -4px -4px 4px 0px #4f2006;
+            box-shadow: inset -4px -4px 4px 0px #4f2006;
+        }
+    }
+}

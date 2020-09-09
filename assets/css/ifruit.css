@@ -896,4 +896,31 @@ a:hover {
     border-radius: 50px;
     outline: none; }
 
+.omise-method {
+  max-width: 360px;
+  padding: 15px;
+  border-radius: 10px;
+  margin: auto;
+  border: 1px solid #0f733a; }
+  .omise-method .form-check {
+    padding: 0;
+    text-align: center;
+    color: #000000; }
+    .omise-method .form-check label {
+      background-color: #fff;
+      border-radius: 50px;
+      cursor: pointer;
+      width: 100%;
+      padding: 6px; }
+    .omise-method .form-check input[type=radio] {
+      visibility: hidden; }
+  .omise-method .form-check:not(:last-child) {
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #0f733a; }
+  .omise-method .form-check:hover label {
+    -webkit-box-shadow: inset -4px -4px 4px 0px #4f2006;
+    -moz-box-shadow: inset -4px -4px 4px 0px #4f2006;
+    box-shadow: inset -4px -4px 4px 0px #4f2006; }
+
 /*# sourceMappingURL=ifruit.css.map */

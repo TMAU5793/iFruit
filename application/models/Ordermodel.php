@@ -61,9 +61,15 @@
 		public function updateOrderPayment($data)
 		{
 			$date = new DateTime();
+			$order_status='1';
+			if($data['status']==='successful'){
+				$order_status = '2';
+			}else{
+				$order_status = '1';
+			}
 			$order_info=array(
-				"order_status"=>'2',
-				"payment_status"=>'2',
+				"order_status"=>$order_status,
+				"payment_status"=>$data['status'],
 				"charge_id"=>$data['charge_id'],
 				"update_date"=> date_format($date, 'Y-m-d H:i:s')			
 			);

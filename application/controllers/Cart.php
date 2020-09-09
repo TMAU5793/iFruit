@@ -48,7 +48,7 @@ class Cart extends CI_Controller {
 				$order = $this->Ordermodel->AddOrder($this->input->post(),$carts,$shipping);
 				if($order){
 					$this->cart->destroy();
-					$this->payment($order->invoice_no);
+					$this->omise_method($order->invoice_no);
 				}
 			}else{
 				$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
@@ -68,11 +68,11 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function payment($invoice_no='INV20090100004'){
+	public function omise_method($invoice_no='INV20082800002'){
 		$fied = ['invoice_no','nettotal'];
-		if($invoice_no!=null){
-			$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');
-			$data['order'] = $this->Utilitymodel->getOrderByInvoice($invoice_no,$fied);
+		$data['order'] = $this->Utilitymodel->getOrderByInvoice($invoice_no,$fied);
+		if($data['order']){
+			$fdata['info'] = $this->Utilitymodel->getOptionTable($page='contact');			
 			$this->load->view('common/header');
 			$this->load->view('payment',$data);
 			$this->load->view('common/footer',$fdata);
@@ -82,14 +82,19 @@ class Cart extends CI_Controller {
 	}
 
 	public function confirmation()
+	{
+		print_r($this->input->post());
+	}
+
+	public function confirmation2()
 	{	
 		$post = $this->input->post();
 		if($post){
 			$ref_id = $post['hd_invoice'];
 			$amount = str_replace('.','',$post['hd_nettotal']);
-			$return_uri = base_url("Cart/complete/".$ref_id); // ในขั้นตอนนี้ให้สร้าง ref_id สำหรับอ้างอิงไว้ใช้ในขั้นตอนต่อไป อาจจะใช้เป็น order id ก็ได้ ประมาณว่า order นี้กำลังจะชำระเงิน
+			$return_uri = base_url("Cart/payment/".$ref_id); // ในขั้นตอนนี้ให้สร้าง ref_id สำหรับอ้างอิงไว้ใช้ในขั้นตอนต่อไป อาจจะใช้เป็น order id ก็ได้ ประมาณว่า order นี้กำลังจะชำระเงิน
 
-			echo $post['hd_method'];
+			//echo $post['hd_method'];
 			if($post['hd_method']=="bill_payment_tesco_lotus"){
 				$source = OmiseSource::create(array(
 					'amount' => $amount,
@@ -107,7 +112,7 @@ class Cart extends CI_Controller {
 				));
 				print_r($source);
 			}else{				
-				/*$omiseToken = $post['omiseToken']; // omiseToken จะถูกส่งมาอัตโนมัติผ่าน omise form				
+				$omiseToken = $post['omiseToken']; // omiseToken จะถูกส่งมาอัตโนมัติผ่าน omise form				
 				$charge = OmiseCharge::create(array(
 					'amount' => $amount,
 					'currency' => 'THB',
@@ -117,6 +122,7 @@ class Cart extends CI_Controller {
 				if($charge){
 					$update_order =[
 						'invoice' => $ref_id,
+						'status' => $charge['status'],
 						'charge_id' => $charge['id']
 					];
 					$update_order = $this->Ordermodel->updateOrderPayment($update_order);
@@ -124,7 +130,11 @@ class Cart extends CI_Controller {
 						$authorize_uri = $charge['authorize_uri'];
 						redirect($authorize_uri,'refresh');
 					}
-				}*/
+				}else{
+					print('<pre>');
+					print_r($charge);
+					print('</pre>');
+				}
 				//$charge_id = $charge['id'];
 				//$authorize_uri = $charge['authorize_uri'];        
 				// จังหวะนี้สำคัญ ก่อนที่จะ redirect ไปจากหน้านี้ ให้บันทึก ref_id และ charge_id ไว้ในฐานข้อมูลของเรา 
@@ -136,14 +146,18 @@ class Cart extends CI_Controller {
 		}
 	}
 
-	public function complete(){
+	public function payment(){
 		$invoice = $this->uri->segment(3); // ใช้ ref_id คิวรี่หา charge_id แล้วใช้หาค่า status ว่า transaction นี้สำเร็จหรือไม่สำเร็จ
-		$result = $this->Ordermodel->getOrderByInvoice($invoice);
-		$charge = OmiseCharge::retrieve($result->charge_id);
-		if($charge['status'] === 'successful') {
-			echo 'เงินเข้าบัญชีเรียบร้อยแล้ว';
+		if($invoice){
+			$result = $this->Ordermodel->getOrderByInvoice($invoice);
+			//$charge = OmiseCharge::retrieve($result->charge_id);
+			if($result->payment_status === 'successful') {
+				echo 'เงินเข้าบัญชีเรียบร้อยแล้ว';
+			}else{
+				echo 'อาจจะ failed หรือ pending อยู่';
+			}
 		}else{
-			echo 'อาจจะ failed หรือ pending อยู่';
+			redirect('Order');
 		}
 	}
 

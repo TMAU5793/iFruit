@@ -64,11 +64,8 @@ class Order extends CI_Controller {
 				<div class="col-md-6 text-right">
 					<strong>'.number_format($this->cart->total()).' ฿</strong>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-12 text-center">
 					<a href="'.base_url('Cart').'" class="btn-cart">ตะกร้าสินค้า</a>
-				</div>
-				<div class="col-md-6 text-right">
-				<a href="'.base_url('Cart/billing').'" class="btn-buy">สั่งซื้อ</a>
 				</div>
 			</div>
 		';
